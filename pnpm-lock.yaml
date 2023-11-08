@@ -35,6 +35,9 @@ dependencies:
   rehype-react:
     specifier: ^8.0.0
     version: registry.npmmirror.com/rehype-react@8.0.0
+  rehype-sanitize:
+    specifier: ^6.0.0
+    version: registry.npmmirror.com/rehype-sanitize@6.0.0
   rehype-slug:
     specifier: ^6.0.0
     version: registry.npmmirror.com/rehype-slug@6.0.0
@@ -970,6 +973,16 @@ packages:
       vfile: registry.npmmirror.com/vfile@6.0.1
       web-namespaces: registry.npmmirror.com/web-namespaces@2.0.1
       zwitch: registry.npmmirror.com/zwitch@2.0.4
+
+  registry.npmmirror.com/hast-util-sanitize@5.0.1:
+    resolution: {integrity: sha512-IGrgWLuip4O2nq5CugXy4GI2V8kx4sFVy5Hd4vF7AR2gxS0N9s7nEAVUyeMtZKZvzrxVsHt73XdTsno1tClIkQ==, tarball: https://registry.npmmirror.com/hast-util-sanitize/-/hast-util-sanitize-5.0.1.tgz}
+    name: hast-util-sanitize
+    version: 5.0.1
+    dependencies:
+      '@types/hast': registry.npmmirror.com/@types/hast@3.0.2
+      '@ungap/structured-clone': registry.npmmirror.com/@ungap/structured-clone@1.2.0
+      unist-util-position: registry.npmmirror.com/unist-util-position@5.0.0
+    dev: false
 
   registry.npmmirror.com/hast-util-to-html@9.0.0:
     resolution: {integrity: sha512-IVGhNgg7vANuUA2XKrT6sOIIPgaYZnmLx3l/CCOAK0PtgfoHrZwX7jCSYyFxHTrGmC6S9q8aQQekjp4JPZF+cw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hast-util-to-html/-/hast-util-to-html-9.0.0.tgz}
@@ -2153,6 +2166,15 @@ packages:
       '@types/hast': registry.npmmirror.com/@types/hast@3.0.2
       hast-util-to-jsx-runtime: registry.npmmirror.com/hast-util-to-jsx-runtime@2.2.0
       unified: registry.npmmirror.com/unified@11.0.4
+    dev: false
+
+  registry.npmmirror.com/rehype-sanitize@6.0.0:
+    resolution: {integrity: sha512-CsnhKNsyI8Tub6L4sm5ZFsme4puGfc6pYylvXo1AeqaGbjOYyzNv3qZPwvs0oMJ39eryyeOdmxwUIo94IpEhqg==, tarball: https://registry.npmmirror.com/rehype-sanitize/-/rehype-sanitize-6.0.0.tgz}
+    name: rehype-sanitize
+    version: 6.0.0
+    dependencies:
+      '@types/hast': registry.npmmirror.com/@types/hast@3.0.2
+      hast-util-sanitize: registry.npmmirror.com/hast-util-sanitize@5.0.1
     dev: false
 
   registry.npmmirror.com/rehype-slug@6.0.0:
