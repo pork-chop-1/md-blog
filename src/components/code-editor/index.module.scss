@@ -1,0 +1,30 @@
+.container {
+  .input-area {
+    @apply min-w-full min-h-full relative z-10 bg-transparent text-transparent caret-white box-border;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      'Liberation Mono', 'Courier New', monospace;
+    padding: 1rem;
+    white-space: nowrap;
+    resize: none;
+    overflow: hidden;
+    // padding-left not work in textarea
+    border-right: 1rem solid transparent;
+
+    &:focus {
+      @apply outline-none;
+    }
+  }
+
+  .show-area {
+    @apply inset-0 absolute overflow-visible;
+    pre {
+      code {
+        overflow: visible;
+      }
+    }
+  }
+
+  @apply mr-auto relative overflow-auto;
+  min-height: 54px;
+  background-color: #1E1E1E;
+}

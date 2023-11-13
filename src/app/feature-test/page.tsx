@@ -4,6 +4,8 @@ import Editor from '@monaco-editor/react'
 import { editor } from 'monaco-editor'
 import { useState } from 'react'
 
+import { Button, useButton } from '@mui/base'
+
 export default function FeatureTest() {
   const [content, setContent] = useState(`
   import { getPostBySlug } from '@/lib/api'
@@ -41,6 +43,8 @@ export default function FeatureTest() {
     }
   }`)
 
+  const { getRootProps } = useButton()
+
   const editorContentHandler = (
     content: string | undefined,
     env: editor.IModelContentChangedEvent,
@@ -56,6 +60,14 @@ export default function FeatureTest() {
         defaultValue={content}
         onChange={editorContentHandler}
       />
+
+      <Button>button click</Button>
+      <button
+        type="button"
+        {...getRootProps()}
+      >
+        Click Me
+      </button>
     </>
   )
 }

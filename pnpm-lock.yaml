@@ -8,12 +8,21 @@ dependencies:
   '@monaco-editor/react':
     specifier: ^4.6.0
     version: registry.npmmirror.com/@monaco-editor/react@4.6.0(monaco-editor@0.44.0)(react-dom@18.2.0)(react@18.2.0)
+  '@mui/base':
+    specifier: 5.0.0-beta.23
+    version: registry.npmmirror.com/@mui/base@5.0.0-beta.23(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0)
   better-sqlite3:
     specifier: ^9.0.0
     version: registry.npmmirror.com/better-sqlite3@9.0.0
   gray-matter:
     specifier: ^4.0.3
     version: registry.npmmirror.com/gray-matter@4.0.3
+  hastscript:
+    specifier: ^8.0.0
+    version: registry.npmmirror.com/hastscript@8.0.0
+  mdast-util-directive:
+    specifier: ^3.0.0
+    version: registry.npmmirror.com/mdast-util-directive@3.0.0
   monaco-editor:
     specifier: ^0.44.0
     version: registry.npmmirror.com/monaco-editor@0.44.0
@@ -44,6 +53,9 @@ dependencies:
   rehype-stringify:
     specifier: ^10.0.0
     version: registry.npmmirror.com/rehype-stringify@10.0.0
+  remark-directive:
+    specifier: ^3.0.0
+    version: registry.npmmirror.com/remark-directive@3.0.0
   remark-gfm:
     specifier: ^4.0.0
     version: registry.npmmirror.com/remark-gfm@4.0.0
@@ -59,11 +71,20 @@ dependencies:
   unified:
     specifier: ^11.0.4
     version: registry.npmmirror.com/unified@11.0.4
+  unist-util-visit:
+    specifier: ^5.0.0
+    version: registry.npmmirror.com/unist-util-visit@5.0.0
+  vfile:
+    specifier: ^6.0.1
+    version: registry.npmmirror.com/vfile@6.0.1
 
 devDependencies:
   '@types/better-sqlite3':
     specifier: ^7.6.6
     version: registry.npmmirror.com/@types/better-sqlite3@7.6.6
+  '@types/mdast':
+    specifier: ^4.0.3
+    version: registry.npmmirror.com/@types/mdast@4.0.3
   '@types/node':
     specifier: ^20
     version: registry.npmmirror.com/@types/node@20.8.9
@@ -100,6 +121,52 @@ packages:
     version: 5.2.0
     engines: {node: '>=10'}
     dev: true
+
+  registry.npmmirror.com/@babel/runtime@7.23.2:
+    resolution: {integrity: sha512-mM8eg4yl5D6i3lu2QKPuPH4FArvJ8KhTofbE7jwMUv9KX5mBvwPAqnV3MlyBNqdp9RyRKP6Yck8TrfYrPvX3bg==, tarball: https://registry.npmmirror.com/@babel/runtime/-/runtime-7.23.2.tgz}
+    name: '@babel/runtime'
+    version: 7.23.2
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      regenerator-runtime: registry.npmmirror.com/regenerator-runtime@0.14.0
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/core@1.5.0:
+    resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==, tarball: https://registry.npmmirror.com/@floating-ui/core/-/core-1.5.0.tgz}
+    name: '@floating-ui/core'
+    version: 1.5.0
+    dependencies:
+      '@floating-ui/utils': registry.npmmirror.com/@floating-ui/utils@0.1.6
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/dom@1.5.3:
+    resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==, tarball: https://registry.npmmirror.com/@floating-ui/dom/-/dom-1.5.3.tgz}
+    name: '@floating-ui/dom'
+    version: 1.5.3
+    dependencies:
+      '@floating-ui/core': registry.npmmirror.com/@floating-ui/core@1.5.0
+      '@floating-ui/utils': registry.npmmirror.com/@floating-ui/utils@0.1.6
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/react-dom@2.0.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-wOoKUw2P24/OXbNr3bbCqWgoltsyY7lFBDPVtjj/V4WDIJ5hja2C/r+CoWmS+Y75Ahndds3wa7eJRhnJxTCJaQ==, tarball: https://registry.npmmirror.com/@floating-ui/react-dom/-/react-dom-2.0.3.tgz}
+    id: registry.npmmirror.com/@floating-ui/react-dom/2.0.3
+    name: '@floating-ui/react-dom'
+    version: 2.0.3
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
+    dependencies:
+      '@floating-ui/dom': registry.npmmirror.com/@floating-ui/dom@1.5.3
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@floating-ui/utils@0.1.6:
+    resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==, tarball: https://registry.npmmirror.com/@floating-ui/utils/-/utils-0.1.6.tgz}
+    name: '@floating-ui/utils'
+    version: 0.1.6
+    dev: false
 
   registry.npmmirror.com/@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@jridgewell/gen-mapping/-/gen-mapping-0.3.3.tgz}
@@ -167,6 +234,67 @@ packages:
       monaco-editor: registry.npmmirror.com/monaco-editor@0.44.0
       react: registry.npmmirror.com/react@18.2.0
       react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@mui/base@5.0.0-beta.23(@types/react@18.2.33)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-9L8SQUGAWtd/Qi7Qem26+oSSgpY7f2iQTuvcz/rsGpyZjSomMMO6lwYeQSA0CpWM7+aN7eGoSY/WV6wxJiIxXw==, tarball: https://registry.npmmirror.com/@mui/base/-/base-5.0.0-beta.23.tgz}
+    id: registry.npmmirror.com/@mui/base/5.0.0-beta.23
+    name: '@mui/base'
+    version: 5.0.0-beta.23
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+      react-dom: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.23.2
+      '@floating-ui/react-dom': registry.npmmirror.com/@floating-ui/react-dom@2.0.3(react-dom@18.2.0)(react@18.2.0)
+      '@mui/types': registry.npmmirror.com/@mui/types@7.2.8(@types/react@18.2.33)
+      '@mui/utils': registry.npmmirror.com/@mui/utils@5.14.17(@types/react@18.2.33)(react@18.2.0)
+      '@popperjs/core': registry.npmmirror.com/@popperjs/core@2.11.8
+      '@types/react': registry.npmmirror.com/@types/react@18.2.33
+      clsx: registry.npmmirror.com/clsx@2.0.0
+      prop-types: registry.npmmirror.com/prop-types@15.8.1
+      react: registry.npmmirror.com/react@18.2.0
+      react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
+    dev: false
+
+  registry.npmmirror.com/@mui/types@7.2.8(@types/react@18.2.33):
+    resolution: {integrity: sha512-9u0ji+xspl96WPqvrYJF/iO+1tQ1L5GTaDOeG3vCR893yy7VcWwRNiVMmPdPNpMDqx0WV1wtEW9OMwK9acWJzQ==, tarball: https://registry.npmmirror.com/@mui/types/-/types-7.2.8.tgz}
+    id: registry.npmmirror.com/@mui/types/7.2.8
+    name: '@mui/types'
+    version: 7.2.8
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react@18.2.33
+    dev: false
+
+  registry.npmmirror.com/@mui/utils@5.14.17(@types/react@18.2.33)(react@18.2.0):
+    resolution: {integrity: sha512-yxnWgSS4J6DMFPw2Dof85yBkG02VTbEiqsikymMsnZnXDurtVGTIhlNuV24GTmFTuJMzEyTTU9UF+O7zaL8LEQ==, tarball: https://registry.npmmirror.com/@mui/utils/-/utils-5.14.17.tgz}
+    id: registry.npmmirror.com/@mui/utils/5.14.17
+    name: '@mui/utils'
+    version: 5.14.17
+    engines: {node: '>=12.0.0'}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.0 || ^18.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.23.2
+      '@types/prop-types': registry.npmmirror.com/@types/prop-types@15.7.9
+      '@types/react': registry.npmmirror.com/@types/react@18.2.33
+      prop-types: registry.npmmirror.com/prop-types@15.8.1
+      react: registry.npmmirror.com/react@18.2.0
+      react-is: registry.npmmirror.com/react-is@18.2.0
     dev: false
 
   registry.npmmirror.com/@next/env@14.0.1:
@@ -305,6 +433,12 @@ packages:
       fastq: registry.npmmirror.com/fastq@1.15.0
     dev: true
 
+  registry.npmmirror.com/@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==, tarball: https://registry.npmmirror.com/@popperjs/core/-/core-2.11.8.tgz}
+    name: '@popperjs/core'
+    version: 2.11.8
+    dev: false
+
   registry.npmmirror.com/@swc/helpers@0.5.2:
     resolution: {integrity: sha512-E4KcWTpoLHqwPHLxidpOqQbcrZVgi0rsmmZXUle1jXmJfuIf/UWpczUJ7MZZ5tlxytgJXyp0w4PGkkeLiuIdZw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@swc/helpers/-/helpers-0.5.2.tgz}
     name: '@swc/helpers'
@@ -336,10 +470,10 @@ packages:
     dependencies:
       '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
 
-  registry.npmmirror.com/@types/mdast@4.0.2:
-    resolution: {integrity: sha512-tYR83EignvhYO9iU3kDg8V28M0jqyh9zzp5GV+EO+AYnyUl3P5ltkTeJuTiFZQFz670FSb3EwT/6LQdX+UdKfw==, tarball: https://registry.npmmirror.com/@types/mdast/-/mdast-4.0.2.tgz}
+  registry.npmmirror.com/@types/mdast@4.0.3:
+    resolution: {integrity: sha512-LsjtqsyF+d2/yFOYaN22dHZI1Cpwkrj+g06G8+qtUKlhovPW89YhqSnfKtMbkgmEtYpH2gydRNULd6y8mciAFg==, tarball: https://registry.npmmirror.com/@types/mdast/-/mdast-4.0.3.tgz}
     name: '@types/mdast'
-    version: 4.0.2
+    version: 4.0.3
     dependencies:
       '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
 
@@ -361,7 +495,6 @@ packages:
     resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/prop-types/-/prop-types-15.7.9.tgz}
     name: '@types/prop-types'
     version: 15.7.9
-    dev: true
 
   registry.npmmirror.com/@types/react-dom@18.2.14:
     resolution: {integrity: sha512-V835xgdSVmyQmI1KLV2BEIUgqEuinxp9O4G6g3FqO/SqLac049E53aysv0oEFD2kHfejeKU+ZqL2bcFWj9gLAQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.2.14.tgz}
@@ -379,13 +512,17 @@ packages:
       '@types/prop-types': registry.npmmirror.com/@types/prop-types@15.7.9
       '@types/scheduler': registry.npmmirror.com/@types/scheduler@0.16.5
       csstype: registry.npmmirror.com/csstype@3.1.2
-    dev: true
 
   registry.npmmirror.com/@types/scheduler@0.16.5:
     resolution: {integrity: sha512-s/FPdYRmZR8SjLWGMCuax7r3qCWQw9QKHzXVukAuuIJkXkDRwp+Pu5LMIVFi0Fxbav35WURicYr8u1QsoybnQw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/scheduler/-/scheduler-0.16.5.tgz}
     name: '@types/scheduler'
     version: 0.16.5
-    dev: true
+
+  registry.npmmirror.com/@types/unist@2.0.10:
+    resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==, tarball: https://registry.npmmirror.com/@types/unist/-/unist-2.0.10.tgz}
+    name: '@types/unist'
+    version: 2.0.10
+    dev: false
 
   registry.npmmirror.com/@types/unist@3.0.1:
     resolution: {integrity: sha512-ue/hDUpPjC85m+PM9OQDMZr3LywT+CT6mPsQq8OJtCLiERkGRcQUFvu9XASF5XWqyZFXbf15lvb3JFJ4dRLWPg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/unist/-/unist-3.0.1.tgz}
@@ -581,6 +718,12 @@ packages:
     version: 2.0.2
     dev: false
 
+  registry.npmmirror.com/character-reference-invalid@2.0.1:
+    resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==, tarball: https://registry.npmmirror.com/character-reference-invalid/-/character-reference-invalid-2.0.1.tgz}
+    name: character-reference-invalid
+    version: 2.0.1
+    dev: false
+
   registry.npmmirror.com/chokidar@3.5.3:
     resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/chokidar/-/chokidar-3.5.3.tgz}
     name: chokidar
@@ -607,6 +750,13 @@ packages:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/client-only/-/client-only-0.0.1.tgz}
     name: client-only
     version: 0.0.1
+    dev: false
+
+  registry.npmmirror.com/clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==, tarball: https://registry.npmmirror.com/clsx/-/clsx-2.0.0.tgz}
+    name: clsx
+    version: 2.0.0
+    engines: {node: '>=6'}
     dev: false
 
   registry.npmmirror.com/comma-separated-tokens@2.0.3:
@@ -639,7 +789,6 @@ packages:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/csstype/-/csstype-3.1.2.tgz}
     name: csstype
     version: 3.1.2
-    dev: true
 
   registry.npmmirror.com/debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/debug/-/debug-4.3.4.tgz}
@@ -949,7 +1098,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/hast-util-parse-selector@4.0.0:
-    resolution: {integrity: sha512-wkQCkSYoOGCRKERFWcxMVMOcYE2K1AaNLU8DXS9arxnLOUEWbOXKXiJUNzEpqZ3JOKpnha3jkFrumEjVliDe7A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hast-util-parse-selector/-/hast-util-parse-selector-4.0.0.tgz}
+    resolution: {integrity: sha512-wkQCkSYoOGCRKERFWcxMVMOcYE2K1AaNLU8DXS9arxnLOUEWbOXKXiJUNzEpqZ3JOKpnha3jkFrumEjVliDe7A==, tarball: https://registry.npmmirror.com/hast-util-parse-selector/-/hast-util-parse-selector-4.0.0.tgz}
     name: hast-util-parse-selector
     version: 4.0.0
     dependencies:
@@ -1060,7 +1209,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/hastscript@8.0.0:
-    resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hastscript/-/hastscript-8.0.0.tgz}
+    resolution: {integrity: sha512-dMOtzCEd3ABUeSIISmrETiKuyydk1w0pa+gE/uormcTpSYuaNJPbX1NU3JLyscSLjwAQM8bWMhhIlnCqnRvDTw==, tarball: https://registry.npmmirror.com/hastscript/-/hastscript-8.0.0.tgz}
     name: hastscript
     version: 8.0.0
     dependencies:
@@ -1120,6 +1269,21 @@ packages:
     version: 0.1.1
     dev: false
 
+  registry.npmmirror.com/is-alphabetical@2.0.1:
+    resolution: {integrity: sha512-FWyyY60MeTNyeSRpkM2Iry0G9hpr7/9kD40mD/cGQEuilcZYS4okz8SN2Q6rLCJ8gbCt6fN+rC+6tMGS99LaxQ==, tarball: https://registry.npmmirror.com/is-alphabetical/-/is-alphabetical-2.0.1.tgz}
+    name: is-alphabetical
+    version: 2.0.1
+    dev: false
+
+  registry.npmmirror.com/is-alphanumerical@2.0.1:
+    resolution: {integrity: sha512-hmbYhX/9MUMF5uh7tOXyK/n0ZvWpad5caBA17GsC6vyuCqaWliRG5K1qS9inmUhEMaOBIW7/whAnSwveW/LtZw==, tarball: https://registry.npmmirror.com/is-alphanumerical/-/is-alphanumerical-2.0.1.tgz}
+    name: is-alphanumerical
+    version: 2.0.1
+    dependencies:
+      is-alphabetical: registry.npmmirror.com/is-alphabetical@2.0.1
+      is-decimal: registry.npmmirror.com/is-decimal@2.0.1
+    dev: false
+
   registry.npmmirror.com/is-binary-path@2.1.0:
     resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-binary-path/-/is-binary-path-2.1.0.tgz}
     name: is-binary-path
@@ -1135,6 +1299,12 @@ packages:
     dependencies:
       hasown: registry.npmmirror.com/hasown@2.0.0
     dev: true
+
+  registry.npmmirror.com/is-decimal@2.0.1:
+    resolution: {integrity: sha512-AAB9hiomQs5DXWcRB1rqsxGUstbRroFOPPVAomNk/3XHR5JyEZChOyTWe2oayKnsSsr/kcGqF+z6yuH6HHpN0A==, tarball: https://registry.npmmirror.com/is-decimal/-/is-decimal-2.0.1.tgz}
+    name: is-decimal
+    version: 2.0.1
+    dev: false
 
   registry.npmmirror.com/is-extendable@0.1.1:
     resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-extendable/-/is-extendable-0.1.1.tgz}
@@ -1156,6 +1326,12 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       is-extglob: registry.npmmirror.com/is-extglob@2.1.1
+
+  registry.npmmirror.com/is-hexadecimal@2.0.1:
+    resolution: {integrity: sha512-DgZQp241c8oO6cA1SbTEWiXeoxV42vlcJxgH+B3hi1AiqqKruZR3ZGF8In3fj4+/y/7rHvlOZLZtgJ/4ttYGZg==, tarball: https://registry.npmmirror.com/is-hexadecimal/-/is-hexadecimal-2.0.1.tgz}
+    name: is-hexadecimal
+    version: 2.0.1
+    dev: false
 
   registry.npmmirror.com/is-number@7.0.0:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/is-number/-/is-number-7.0.0.tgz}
@@ -1253,12 +1429,29 @@ packages:
     version: 3.0.3
     dev: false
 
+  registry.npmmirror.com/mdast-util-directive@3.0.0:
+    resolution: {integrity: sha512-JUpYOqKI4mM3sZcNxmF/ox04XYFFkNwr0CFlrQIkCwbvH0xzMCqkMqAde9wRd80VAhaUrwFwKm2nxretdT1h7Q==, tarball: https://registry.npmmirror.com/mdast-util-directive/-/mdast-util-directive-3.0.0.tgz}
+    name: mdast-util-directive
+    version: 3.0.0
+    dependencies:
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
+      '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
+      devlop: registry.npmmirror.com/devlop@1.1.0
+      mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
+      mdast-util-to-markdown: registry.npmmirror.com/mdast-util-to-markdown@2.1.0
+      parse-entities: registry.npmmirror.com/parse-entities@4.0.1
+      stringify-entities: registry.npmmirror.com/stringify-entities@4.0.3
+      unist-util-visit-parents: registry.npmmirror.com/unist-util-visit-parents@6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   registry.npmmirror.com/mdast-util-find-and-replace@3.0.1:
     resolution: {integrity: sha512-SG21kZHGC3XRTSUhtofZkBzZTJNM5ecCi0SK2IMKmSXR8vO3peL+kb1O0z7Zl83jKtutG4k5Wv/W7V3/YHvzPA==, tarball: https://registry.npmmirror.com/mdast-util-find-and-replace/-/mdast-util-find-and-replace-3.0.1.tgz}
     name: mdast-util-find-and-replace
     version: 3.0.1
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       escape-string-regexp: registry.npmmirror.com/escape-string-regexp@5.0.0
       unist-util-is: registry.npmmirror.com/unist-util-is@6.0.0
       unist-util-visit-parents: registry.npmmirror.com/unist-util-visit-parents@6.0.1
@@ -1269,7 +1462,7 @@ packages:
     name: mdast-util-from-markdown
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
       decode-named-character-reference: registry.npmmirror.com/decode-named-character-reference@1.0.2
       devlop: registry.npmmirror.com/devlop@1.1.0
@@ -1290,7 +1483,7 @@ packages:
     name: mdast-util-gfm-autolink-literal
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       ccount: registry.npmmirror.com/ccount@2.0.1
       devlop: registry.npmmirror.com/devlop@1.1.0
       mdast-util-find-and-replace: registry.npmmirror.com/mdast-util-find-and-replace@3.0.1
@@ -1302,7 +1495,7 @@ packages:
     name: mdast-util-gfm-footnote
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       devlop: registry.npmmirror.com/devlop@1.1.0
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
       mdast-util-to-markdown: registry.npmmirror.com/mdast-util-to-markdown@2.1.0
@@ -1316,7 +1509,7 @@ packages:
     name: mdast-util-gfm-strikethrough
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
       mdast-util-to-markdown: registry.npmmirror.com/mdast-util-to-markdown@2.1.0
     transitivePeerDependencies:
@@ -1328,7 +1521,7 @@ packages:
     name: mdast-util-gfm-table
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       devlop: registry.npmmirror.com/devlop@1.1.0
       markdown-table: registry.npmmirror.com/markdown-table@3.0.3
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
@@ -1342,7 +1535,7 @@ packages:
     name: mdast-util-gfm-task-list-item
     version: 2.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       devlop: registry.npmmirror.com/devlop@1.1.0
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
       mdast-util-to-markdown: registry.npmmirror.com/mdast-util-to-markdown@2.1.0
@@ -1371,7 +1564,7 @@ packages:
     name: mdast-util-phrasing
     version: 4.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       unist-util-is: registry.npmmirror.com/unist-util-is@6.0.0
     dev: false
 
@@ -1381,7 +1574,7 @@ packages:
     version: 13.0.2
     dependencies:
       '@types/hast': registry.npmmirror.com/@types/hast@3.0.2
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       '@ungap/structured-clone': registry.npmmirror.com/@ungap/structured-clone@1.2.0
       devlop: registry.npmmirror.com/devlop@1.1.0
       micromark-util-sanitize-uri: registry.npmmirror.com/micromark-util-sanitize-uri@2.0.0
@@ -1394,7 +1587,7 @@ packages:
     name: mdast-util-to-markdown
     version: 2.1.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
       longest-streak: registry.npmmirror.com/longest-streak@3.1.0
       mdast-util-phrasing: registry.npmmirror.com/mdast-util-phrasing@4.0.0
@@ -1409,7 +1602,7 @@ packages:
     name: mdast-util-to-string
     version: 4.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
     dev: false
 
   registry.npmmirror.com/merge2@1.4.1:
@@ -1440,6 +1633,20 @@ packages:
       micromark-util-subtokenize: registry.npmmirror.com/micromark-util-subtokenize@2.0.0
       micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@2.0.0
       micromark-util-types: registry.npmmirror.com/micromark-util-types@2.0.0
+    dev: false
+
+  registry.npmmirror.com/micromark-extension-directive@3.0.0:
+    resolution: {integrity: sha512-61OI07qpQrERc+0wEysLHMvoiO3s2R56x5u7glHq2Yqq6EHbH4dW25G9GfDdGCDYqA21KE6DWgNSzxSwHc2hSg==, tarball: https://registry.npmmirror.com/micromark-extension-directive/-/micromark-extension-directive-3.0.0.tgz}
+    name: micromark-extension-directive
+    version: 3.0.0
+    dependencies:
+      devlop: registry.npmmirror.com/devlop@1.1.0
+      micromark-factory-space: registry.npmmirror.com/micromark-factory-space@2.0.0
+      micromark-factory-whitespace: registry.npmmirror.com/micromark-factory-whitespace@2.0.0
+      micromark-util-character: registry.npmmirror.com/micromark-util-character@2.0.1
+      micromark-util-symbol: registry.npmmirror.com/micromark-util-symbol@2.0.0
+      micromark-util-types: registry.npmmirror.com/micromark-util-types@2.0.0
+      parse-entities: registry.npmmirror.com/parse-entities@4.0.1
     dev: false
 
   registry.npmmirror.com/micromark-extension-gfm-autolink-literal@2.0.0:
@@ -1865,7 +2072,6 @@ packages:
     name: object-assign
     version: 4.1.1
     engines: {node: '>=0.10.0'}
-    dev: true
 
   registry.npmmirror.com/object-hash@3.0.0:
     resolution: {integrity: sha512-RSn9F68PjH9HqtltsSnqYC1XXoWe9Bju5+213R98cNGttag9q9yAOTzdbsqvIa7aNm5WffBZFpWYr2aWrklWAw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/object-hash/-/object-hash-3.0.0.tgz}
@@ -1880,6 +2086,21 @@ packages:
     version: 1.4.0
     dependencies:
       wrappy: registry.npmmirror.com/wrappy@1.0.2
+
+  registry.npmmirror.com/parse-entities@4.0.1:
+    resolution: {integrity: sha512-SWzvYcSJh4d/SGLIOQfZ/CoNv6BTlI6YEQ7Nj82oDVnRpwe/Z/F1EMx42x3JAOwGBlCjeCH0BRJQbQ/opHL17w==, tarball: https://registry.npmmirror.com/parse-entities/-/parse-entities-4.0.1.tgz}
+    name: parse-entities
+    version: 4.0.1
+    dependencies:
+      '@types/unist': registry.npmmirror.com/@types/unist@2.0.10
+      character-entities: registry.npmmirror.com/character-entities@2.0.2
+      character-entities-legacy: registry.npmmirror.com/character-entities-legacy@3.0.0
+      character-reference-invalid: registry.npmmirror.com/character-reference-invalid@2.0.1
+      decode-named-character-reference: registry.npmmirror.com/decode-named-character-reference@1.0.2
+      is-alphanumerical: registry.npmmirror.com/is-alphanumerical@2.0.1
+      is-decimal: registry.npmmirror.com/is-decimal@2.0.1
+      is-hexadecimal: registry.npmmirror.com/is-hexadecimal@2.0.1
+    dev: false
 
   registry.npmmirror.com/parse5@7.1.2:
     resolution: {integrity: sha512-Czj1WaSVpaoj0wbhMzLmWD69anp2WH7FXMB9n1Sy8/ZFF9jolSQVMu1Ij5WIyGmcBmhk7EOndpO4mIpihVqAXw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/parse5/-/parse5-7.1.2.tgz}
@@ -2042,6 +2263,16 @@ packages:
     hasBin: true
     dev: true
 
+  registry.npmmirror.com/prop-types@15.8.1:
+    resolution: {integrity: sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==, tarball: https://registry.npmmirror.com/prop-types/-/prop-types-15.8.1.tgz}
+    name: prop-types
+    version: 15.8.1
+    dependencies:
+      loose-envify: registry.npmmirror.com/loose-envify@1.4.0
+      object-assign: registry.npmmirror.com/object-assign@4.1.1
+      react-is: registry.npmmirror.com/react-is@16.13.1
+    dev: false
+
   registry.npmmirror.com/property-information@6.3.0:
     resolution: {integrity: sha512-gVNZ74nqhRMiIUYWGQdosYetaKc83x8oT41a0LlV3AAFCAZwCpg4vmGkq8t34+cUhp3cnM4XDiU/7xlgK7HGrg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/property-information/-/property-information-6.3.0.tgz}
     name: property-information
@@ -2087,6 +2318,18 @@ packages:
       scheduler: registry.npmmirror.com/scheduler@0.23.0
     dev: false
 
+  registry.npmmirror.com/react-is@16.13.1:
+    resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, tarball: https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz}
+    name: react-is
+    version: 16.13.1
+    dev: false
+
+  registry.npmmirror.com/react-is@18.2.0:
+    resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==, tarball: https://registry.npmmirror.com/react-is/-/react-is-18.2.0.tgz}
+    name: react-is
+    version: 18.2.0
+    dev: false
+
   registry.npmmirror.com/react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react/-/react-18.2.0.tgz}
     name: react
@@ -2122,6 +2365,12 @@ packages:
     engines: {node: '>=8.10.0'}
     dependencies:
       picomatch: registry.npmmirror.com/picomatch@2.3.1
+
+  registry.npmmirror.com/regenerator-runtime@0.14.0:
+    resolution: {integrity: sha512-srw17NI0TUWHuGa5CFGGmhfNIeja30WMBfbslPNhf6JrqQlLN5gcrvig1oqPxiVaXb0oW0XRKtH6Nngs5lKCIA==, tarball: https://registry.npmmirror.com/regenerator-runtime/-/regenerator-runtime-0.14.0.tgz}
+    name: regenerator-runtime
+    version: 0.14.0
+    dev: false
 
   registry.npmmirror.com/rehype-autolink-headings@7.0.0:
     resolution: {integrity: sha512-DLskejGYHQP9v7vUW85BeYIclgfMQ1IwAMx+0lm8Sr3cME2NThgy2OdTfosmuBA68fqP5o4FK+dknpUMFvlxYQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/rehype-autolink-headings/-/rehype-autolink-headings-7.0.0.tgz}
@@ -2199,12 +2448,25 @@ packages:
       unified: registry.npmmirror.com/unified@11.0.4
     dev: false
 
+  registry.npmmirror.com/remark-directive@3.0.0:
+    resolution: {integrity: sha512-l1UyWJ6Eg1VPU7Hm/9tt0zKtReJQNOA4+iDMAxTyZNWnJnFlbS/7zhiel/rogTLQ2vMYwDzSJa4BiVNqGlqIMA==, tarball: https://registry.npmmirror.com/remark-directive/-/remark-directive-3.0.0.tgz}
+    name: remark-directive
+    version: 3.0.0
+    dependencies:
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
+      mdast-util-directive: registry.npmmirror.com/mdast-util-directive@3.0.0
+      micromark-extension-directive: registry.npmmirror.com/micromark-extension-directive@3.0.0
+      unified: registry.npmmirror.com/unified@11.0.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   registry.npmmirror.com/remark-gfm@4.0.0:
     resolution: {integrity: sha512-U92vJgBPkbw4Zfu/IiW2oTZLSL3Zpv+uI7My2eq8JxKgqraFdU8YUGicEJCEgSbeaG+QDFqIcwwfMTOEelPxuA==, tarball: https://registry.npmmirror.com/remark-gfm/-/remark-gfm-4.0.0.tgz}
     name: remark-gfm
     version: 4.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       mdast-util-gfm: registry.npmmirror.com/mdast-util-gfm@3.0.0
       micromark-extension-gfm: registry.npmmirror.com/micromark-extension-gfm@3.0.0
       remark-parse: registry.npmmirror.com/remark-parse@11.0.0
@@ -2219,7 +2481,7 @@ packages:
     name: remark-parse
     version: 11.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       mdast-util-from-markdown: registry.npmmirror.com/mdast-util-from-markdown@2.0.0
       micromark-util-types: registry.npmmirror.com/micromark-util-types@2.0.0
       unified: registry.npmmirror.com/unified@11.0.4
@@ -2233,7 +2495,7 @@ packages:
     version: 11.0.0
     dependencies:
       '@types/hast': registry.npmmirror.com/@types/hast@3.0.2
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       mdast-util-to-hast: registry.npmmirror.com/mdast-util-to-hast@13.0.2
       unified: registry.npmmirror.com/unified@11.0.4
       vfile: registry.npmmirror.com/vfile@6.0.1
@@ -2244,7 +2506,7 @@ packages:
     name: remark-stringify
     version: 11.0.0
     dependencies:
-      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.2
+      '@types/mdast': registry.npmmirror.com/@types/mdast@4.0.3
       mdast-util-to-markdown: registry.npmmirror.com/mdast-util-to-markdown@2.1.0
       unified: registry.npmmirror.com/unified@11.0.4
     dev: false
@@ -2621,7 +2883,7 @@ packages:
       '@types/unist': registry.npmmirror.com/@types/unist@3.0.1
 
   registry.npmmirror.com/unist-util-visit-parents@6.0.1:
-    resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unist-util-visit-parents/-/unist-util-visit-parents-6.0.1.tgz}
+    resolution: {integrity: sha512-L/PqWzfTP9lzzEa6CKs0k2nARxTdZduw3zyh8d2NVBnsyvHjSX4TWse388YrrQKbvI8w20fGjGlhgT96WwKykw==, tarball: https://registry.npmmirror.com/unist-util-visit-parents/-/unist-util-visit-parents-6.0.1.tgz}
     name: unist-util-visit-parents
     version: 6.0.1
     dependencies:
@@ -2629,7 +2891,7 @@ packages:
       unist-util-is: registry.npmmirror.com/unist-util-is@6.0.0
 
   registry.npmmirror.com/unist-util-visit@5.0.0:
-    resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/unist-util-visit/-/unist-util-visit-5.0.0.tgz}
+    resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==, tarball: https://registry.npmmirror.com/unist-util-visit/-/unist-util-visit-5.0.0.tgz}
     name: unist-util-visit
     version: 5.0.0
     dependencies:
@@ -2673,7 +2935,7 @@ packages:
       unist-util-stringify-position: registry.npmmirror.com/unist-util-stringify-position@4.0.0
 
   registry.npmmirror.com/vfile@6.0.1:
-    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/vfile/-/vfile-6.0.1.tgz}
+    resolution: {integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==, tarball: https://registry.npmmirror.com/vfile/-/vfile-6.0.1.tgz}
     name: vfile
     version: 6.0.1
     dependencies:

@@ -1,0 +1,11 @@
+.plus-btn {
+  border: 1px solid gray;
+  border-radius: 7px;
+  padding: 10px;
+  background: #fff;
+}
+
+.chart-container {
+  width: 100%;
+  height: 500px;
+}

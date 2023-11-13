@@ -1,11 +1,16 @@
 'use client'
 
-export default function ScriptTag({content}: {content: string}) {
+import { ScriptHTMLAttributes } from "react"
+
+export default function ScriptTag(props: {
+  children?: string
+} & ScriptHTMLAttributes<HTMLScriptElement>) {
   // window.addEventListener('load', () => {
   // })
   const inside = `
-    ${(content)}
+    ${props.children || ''}
   `
-  return <script dangerouslySetInnerHTML={{__html: inside}}>
-  </script>
+
+  delete props.children
+  return <script {...props} dangerouslySetInnerHTML={{__html: inside}}></script>
 }
