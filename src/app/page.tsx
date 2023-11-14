@@ -22,7 +22,7 @@ export default function Home() {
 
       <Link href={'/feature-test'}>feature test</Link>
 
-      <CodeEditor language="js" maxHeight={200} minHeight={200}>
+      <CodeEditor language="js" maxHeight={200}>
       {`http://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/te
 st_pagehattp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/te
 st_pagehattp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/te
@@ -32,6 +32,7 @@ st_pagehattp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pa
 st_pagehattp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/test_pagehttp://localhost:3000/posts/te
 st_pagehattp://localhost:3000/posts/test_page`}
       </CodeEditor>
+
     </main>
   )
 }
