@@ -30,7 +30,7 @@ export default async function PostDetailPage({
         <h1>{params.slug}</h1>
         {/* <div dangerouslySetInnerHTML={{ __html: contentProcessed.toString() }}> */}
         {/* </div> */}
-        <PostRender content={content} />
+        <PostRender content={content} slug={params.slug}/>
         <br />
         <CommentEditor />
       </>

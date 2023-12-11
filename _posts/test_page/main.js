@@ -1,20 +1,20 @@
 // https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules
 // 模块使用
-import { createApp, ref } from 'https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.esm-browser.js'
 import * as echarts from 'https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.esm.js'
 
-const app = createApp({
-  setup() {
-    const message = ref('hello vue!')
-    const count = ref(0)
-    return {
-      message,
-      count
-    }
-  }
-})
+// import { createApp, ref } from 'https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.esm-browser.js'
+// const app = createApp({
+//   setup() {
+//     const message = ref('hello vue!')
+//     const count = ref(0)
+//     return {
+//       message,
+//       count
+//     }
+//   }
+// })
 
-app.mount('#vue-app')
+// app.mount('#vue-app')
 
 const chart = echarts.init(document.querySelector('.chart-container'))
 chart.setOption({

@@ -24,8 +24,9 @@ import {visit} from 'unist-util-visit'
 import {ContainerDirective} from 'mdast-util-directive'
 import {h} from 'hastscript'
 import EscapeTag from './replace/escape-tag'
+import LinkTag from './replace/link-tag'
 
-export default function TmpCreated({ content }: { content: string }) {
+export default function PostRender({ content, slug }: { content: string, slug: string }) {
   // https://unifiedjs.com/explore/package/rehype-react/#use
   const processor = unified()
     .use(remarkParse)
@@ -36,18 +37,18 @@ export default function TmpCreated({ content }: { content: string }) {
     .use(rehypeHighlight)
     .use(rehypeRaw) // 处理md mixin html，尤其script
     .use(rehypeStringify, {allowDangerousHtml: true})
-    .use(addSomeExtension)
-    
+    // .use(addSomeExtension)
     // @ts-expect-error escape is defined by me
     .use(rehypeReact, {
       // @ts-expect-error: the react types are missing.
       Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs,
       components: {
-        script: (props) => <ScriptTag {...props} >{props.children as string}</ScriptTag>,
+        script: (props) => <ScriptTag {...props} slug={slug}>{props.children as string}</ScriptTag>,
         style: (props) => <StyleTag >{props.children as string}</StyleTag>,
         a: (props) => <Link href={props.href || ''}>{props.children}</Link>,
-        img: (props) => <ImageTag {...props}></ImageTag>,
-        escape: EscapeTag
+        img: (props) => <ImageTag {...props} slug={slug}></ImageTag>,
+        escape: EscapeTag,
+        link: (props) => <LinkTag {...props} slug={slug}/>
       },
       passKeys: true
     })

@@ -1,3 +1,9 @@
+---
+title: test1
+date: 2023-02-01 00:00:00
+tags: css next.js
+---
+
 ### test
 
 :::escape
@@ -8,21 +14,6 @@
 </div>
 :::
 
-```
-<div id=\"vue-app\" data-v-app=\"\">
-<div>hello vue</div>
-<div>count: 0</div>
-<button class=\"plus-btn\">plus 1!</button>
-</div>"
- Client: 
- "<div id=\"vue-app\">\n
- <div>{{ message }}</div>\n
- <div>count: {{ count }}</div>\n
- <button class=\"plus-btn\" @click=\"count++\">
- plus 1!
- </button>\n
- </div>
-```
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.global.min.js" integrity="sha512-KIbZu0J3AOx0bmI4fHEpxyM6/YKIRBgCXDrrF0OBFTHvjDeAZ/vBIvVqZwdehD7dJN228/7lK9KJ55k4ZziQTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -44,3 +35,11 @@
   background: #fff;
 }
 </style>
+
+![ringworld](./ringworld.jpg)
+
+
+
+  <div class="chart-container"></div>
+<link rel="stylesheet" href="./main.css"></link>
+<script type="module" src="./main.js"></script>

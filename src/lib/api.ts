@@ -67,14 +67,47 @@ export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
 /**
  * @param {string[]} fields
  */
-export function getAllPosts(fields: string[]) {
+export function getAllPosts<T extends string>({
+  fields,
+  limit = Infinity,
+  offset = 0,
+  orderBy = 'asc'
+}: {
+  fields: T[],
+  limit?: number,
+  offset?: number,
+  orderBy?: 'asc' | 'desc'
+}) {
   // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
   // https://stackoverflow.com/questions/43118692/typescript-filter-out-nulls-from-an-array
+  let compareFn = (l:any, r:any) => {
+    if(!l || !l.date) {
+      return -1
+    }
+    if(!r || !r.date) {
+      return 1
+    }
+    return new Date(l.date).getTime() - new Date(r.date).getTime()
+  }
+  let _compare = compareFn
+  if(orderBy === 'desc') {
+    _compare = (l:any, r:any) => -compareFn(l, r)
+  }
+  
   return getPostSlugs()
     .map((slug) => {
       return getPostBySlug(slug, fields)
     })
-    .filter((v): v is { [key: string]: any } => v != null) // notice!
-    .sort((l, r) => r.date?.localeCompare(l.date))
-  // 按时间从大到小排序
+    .filter((v): v is { [key in T]: any } => v != null) // notice! predicate v is 
+    .sort((l, r) => _compare(l, r))// 按时间从大到小排序
+    .slice(offset, limit)
+}
+
+export function getTagMap() {
+  const tagList: string[] = getAllPosts({fields: ['tags']}).map(v => v.tags)
+  const tagMap = tagList.reduce((prev, cur) => {
+    prev[cur] = (prev[cur] || 0) + 1
+    return prev
+  }, {} as {[key: string]:any})
+  return tagMap
 }

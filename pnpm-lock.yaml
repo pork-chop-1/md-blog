@@ -14,6 +14,9 @@ dependencies:
   better-sqlite3:
     specifier: ^9.0.0
     version: registry.npmmirror.com/better-sqlite3@9.0.0
+  file-type:
+    specifier: ^18.7.0
+    version: registry.npmmirror.com/file-type@18.7.0
   gray-matter:
     specifier: ^4.0.3
     version: registry.npmmirror.com/gray-matter@4.0.3
@@ -445,6 +448,12 @@ packages:
     version: 0.5.2
     dependencies:
       tslib: registry.npmmirror.com/tslib@2.6.2
+    dev: false
+
+  registry.npmmirror.com/@tokenizer/token@0.3.0:
+    resolution: {integrity: sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==, tarball: https://registry.npmmirror.com/@tokenizer/token/-/token-0.3.0.tgz}
+    name: '@tokenizer/token'
+    version: 0.3.0
     dev: false
 
   registry.npmmirror.com/@types/better-sqlite3@7.6.6:
@@ -945,6 +954,17 @@ packages:
       reusify: registry.npmmirror.com/reusify@1.0.4
     dev: true
 
+  registry.npmmirror.com/file-type@18.7.0:
+    resolution: {integrity: sha512-ihHtXRzXEziMrQ56VSgU7wkxh55iNchFkosu7Y9/S+tXHdKyrGjVK0ujbqNnsxzea+78MaLhN6PGmfYSAv1ACw==, tarball: https://registry.npmmirror.com/file-type/-/file-type-18.7.0.tgz}
+    name: file-type
+    version: 18.7.0
+    engines: {node: '>=14.16'}
+    dependencies:
+      readable-web-to-node-stream: registry.npmmirror.com/readable-web-to-node-stream@3.0.2
+      strtok3: registry.npmmirror.com/strtok3@7.0.0
+      token-types: registry.npmmirror.com/token-types@5.0.1
+    dev: false
+
   registry.npmmirror.com/file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz}
     name: file-uri-to-path
@@ -1232,7 +1252,7 @@ packages:
     version: 3.0.0
 
   registry.npmmirror.com/ieee754@1.2.1:
-    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ieee754/-/ieee754-1.2.1.tgz}
+    resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==, tarball: https://registry.npmmirror.com/ieee754/-/ieee754-1.2.1.tgz}
     name: ieee754
     version: 1.2.1
     dev: false
@@ -2122,6 +2142,13 @@ packages:
     version: 1.0.7
     dev: true
 
+  registry.npmmirror.com/peek-readable@5.0.0:
+    resolution: {integrity: sha512-YtCKvLUOvwtMGmrniQPdO7MwPjgkFBtFIrmfSbYmYuq3tKDV/mcfAhBth1+C3ru7uXIZasc/pHnb+YDYNkkj4A==, tarball: https://registry.npmmirror.com/peek-readable/-/peek-readable-5.0.0.tgz}
+    name: peek-readable
+    version: 5.0.0
+    engines: {node: '>=14.16'}
+    dev: false
+
   registry.npmmirror.com/picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/picocolors/-/picocolors-1.0.0.tgz}
     name: picocolors
@@ -2348,7 +2375,7 @@ packages:
     dev: true
 
   registry.npmmirror.com/readable-stream@3.6.2:
-    resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/readable-stream/-/readable-stream-3.6.2.tgz}
+    resolution: {integrity: sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==, tarball: https://registry.npmmirror.com/readable-stream/-/readable-stream-3.6.2.tgz}
     name: readable-stream
     version: 3.6.2
     engines: {node: '>= 6'}
@@ -2356,6 +2383,15 @@ packages:
       inherits: registry.npmmirror.com/inherits@2.0.4
       string_decoder: registry.npmmirror.com/string_decoder@1.3.0
       util-deprecate: registry.npmmirror.com/util-deprecate@1.0.2
+    dev: false
+
+  registry.npmmirror.com/readable-web-to-node-stream@3.0.2:
+    resolution: {integrity: sha512-ePeK6cc1EcKLEhJFt/AebMCLL+GgSKhuygrZ/GLaKZYEecIgIECf4UaUuaByiGtzckwR4ain9VzUh95T1exYGw==, tarball: https://registry.npmmirror.com/readable-web-to-node-stream/-/readable-web-to-node-stream-3.0.2.tgz}
+    name: readable-web-to-node-stream
+    version: 3.0.2
+    engines: {node: '>=8'}
+    dependencies:
+      readable-stream: registry.npmmirror.com/readable-stream@3.6.2
     dev: false
 
   registry.npmmirror.com/readdirp@3.6.0:
@@ -2630,7 +2666,7 @@ packages:
     dev: false
 
   registry.npmmirror.com/string_decoder@1.3.0:
-    resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/string_decoder/-/string_decoder-1.3.0.tgz}
+    resolution: {integrity: sha512-hkRX8U1WjJFd8LsDJ2yQ/wWWxaopEsABU1XfkM8A+j0+85JAGppt16cr1Whg6KIbb4okU6Mql6BOj+uup/wKeA==, tarball: https://registry.npmmirror.com/string_decoder/-/string_decoder-1.3.0.tgz}
     name: string_decoder
     version: 1.3.0
     dependencies:
@@ -2658,6 +2694,16 @@ packages:
     name: strip-json-comments
     version: 2.0.1
     engines: {node: '>=0.10.0'}
+    dev: false
+
+  registry.npmmirror.com/strtok3@7.0.0:
+    resolution: {integrity: sha512-pQ+V+nYQdC5H3Q7qBZAz/MO6lwGhoC2gOAjuouGf/VO0m7vQRh8QNMl2Uf6SwAtzZ9bOw3UIeBukEGNJl5dtXQ==, tarball: https://registry.npmmirror.com/strtok3/-/strtok3-7.0.0.tgz}
+    name: strtok3
+    version: 7.0.0
+    engines: {node: '>=14.16'}
+    dependencies:
+      '@tokenizer/token': registry.npmmirror.com/@tokenizer/token@0.3.0
+      peek-readable: registry.npmmirror.com/peek-readable@5.0.0
     dev: false
 
   registry.npmmirror.com/style-to-object@0.4.4:
@@ -2792,6 +2838,16 @@ packages:
     engines: {node: '>=8.0'}
     dependencies:
       is-number: registry.npmmirror.com/is-number@7.0.0
+
+  registry.npmmirror.com/token-types@5.0.1:
+    resolution: {integrity: sha512-Y2fmSnZjQdDb9W4w4r1tswlMHylzWIeOKpx0aZH9BgGtACHhrk3OkT52AzwcuqTRBZtvvnTjDBh8eynMulu8Vg==, tarball: https://registry.npmmirror.com/token-types/-/token-types-5.0.1.tgz}
+    name: token-types
+    version: 5.0.1
+    engines: {node: '>=14.16'}
+    dependencies:
+      '@tokenizer/token': registry.npmmirror.com/@tokenizer/token@0.3.0
+      ieee754: registry.npmmirror.com/ieee754@1.2.1
+    dev: false
 
   registry.npmmirror.com/trim-lines@3.0.1:
     resolution: {integrity: sha512-kRj8B+YHZCc9kQYdWfJB2/oUl9rA99qbowYYBtr4ui4mZyAQ2JpvVBd/6U2YloATfqBhBTSMhTpgBHtU0Mf3Rg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/trim-lines/-/trim-lines-3.0.1.tgz}

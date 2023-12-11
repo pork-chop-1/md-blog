@@ -1,6 +1,7 @@
 ---
 title: test1
 date: 2023-01-01 00:00:00
+tags: css test javascript
 ---
 
 # Hello world!
@@ -29,7 +30,6 @@ export default async function PostDetailPage({ params: { slug } }) {
     const code = await compile(content, { outputFormat: 'function-body' })
     const yields = await run(code, { ...runtime })
 
-    console.log(date)
     return (
       <>
         <h1>{title}</h1>
