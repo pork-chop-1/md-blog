@@ -8,7 +8,7 @@ export default function Header() {
         <h1 className="text-2xl">Tom's Blog</h1>
         <ul className="flex [&>li]:mx-6 [&>li>a]:flex">
           <li>
-            <Link href={''}>
+            <Link href={'/'}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -27,7 +27,7 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href={''}>
+            <Link href={'/tags'}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

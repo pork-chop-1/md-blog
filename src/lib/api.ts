@@ -64,6 +64,10 @@ export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
   return res
 }
 
+const UPDATE_GAP = 5
+let allPosts: unknown
+let prevTime = 0
+
 /**
  * @param {string[]} fields
  */
@@ -80,34 +84,42 @@ export function getAllPosts<T extends string>({
 }) {
   // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
   // https://stackoverflow.com/questions/43118692/typescript-filter-out-nulls-from-an-array
-  let compareFn = (l:any, r:any) => {
-    if(!l || !l.date) {
+  let compareFn = (l: any, r: any) => {
+    if (!l || !l.date) {
       return -1
     }
-    if(!r || !r.date) {
+    if (!r || !r.date) {
       return 1
     }
     return new Date(l.date).getTime() - new Date(r.date).getTime()
   }
   let _compare = compareFn
-  if(orderBy === 'desc') {
-    _compare = (l:any, r:any) => -compareFn(l, r)
+  if (orderBy === 'desc') {
+    _compare = (l: any, r: any) => -compareFn(l, r)
   }
-  
-  return getPostSlugs()
+
+  if(Date.now() - prevTime < UPDATE_GAP * 1000) {
+    prevTime = Date.now()
+  } else {
+    allPosts = getPostSlugs()
     .map((slug) => {
       return getPostBySlug(slug, fields)
     })
+  }
+
+  return (allPosts as ({ [key in T]: any; } | null)[])
     .filter((v): v is { [key in T]: any } => v != null) // notice! predicate v is 
     .sort((l, r) => _compare(l, r))// 按时间从大到小排序
     .slice(offset, limit)
 }
 
 export function getTagMap() {
-  const tagList: string[] = getAllPosts({fields: ['tags']}).map(v => v.tags)
+  const tagList: string[] = getAllPosts({ fields: ['tags'] }).map(v => v.tags)
   const tagMap = tagList.reduce((prev, cur) => {
-    prev[cur] = (prev[cur] || 0) + 1
+    cur.split(' ').filter(v => v !== '').forEach(v => {
+      prev[v] = (prev[v] || 0) + 1
+    })
     return prev
-  }, {} as {[key: string]:any})
+  }, {} as { [key: string]: any })
   return tagMap
 }
