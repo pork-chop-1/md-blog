@@ -57,6 +57,10 @@ export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
       res[field] = content
     } else if (field === 'slug') {
       res[field] = titleWithoutPostfix
+    } else if (field === 'date') {
+      res[field] = new Date(data[field])
+    } else if (field === 'tags') {
+      res[field] = (data[field] as string).split(' ').filter(v => v !== '')
     } else if (data[field] != null) {
       res[field] = data[field]
     }
@@ -91,20 +95,20 @@ export function getAllPosts<T extends string>({
     if (!r || !r.date) {
       return 1
     }
-    return new Date(l.date).getTime() - new Date(r.date).getTime()
+    return l.date.getTime() - r.date.getTime()
   }
   let _compare = compareFn
   if (orderBy === 'desc') {
     _compare = (l: any, r: any) => -compareFn(l, r)
   }
 
-  if(Date.now() - prevTime < UPDATE_GAP * 1000) {
+  if (Date.now() - prevTime < UPDATE_GAP * 1000) {
     prevTime = Date.now()
   } else {
     allPosts = getPostSlugs()
-    .map((slug) => {
-      return getPostBySlug(slug, fields)
-    })
+      .map((slug) => {
+        return getPostBySlug(slug, fields)
+      })
   }
 
   return (allPosts as ({ [key in T]: any; } | null)[])

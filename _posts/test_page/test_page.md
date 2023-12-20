@@ -2,6 +2,7 @@
 title: test1
 date: 2023-02-01 00:00:00
 tags: css next.js
+img: ./ringworld-inside.jpg
 ---
 
 ### test
