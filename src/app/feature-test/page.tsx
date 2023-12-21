@@ -1,73 +1,63 @@
 'use client'
 
-import Editor from '@monaco-editor/react'
-import { editor } from 'monaco-editor'
-import { useState } from 'react'
-
-import { Button, useButton } from '@mui/base'
+import { useEffect, useRef } from 'react'
+// import './love'
 
 export default function FeatureTest() {
-  const [content, setContent] = useState(`
-  import { getPostBySlug } from '@/lib/api'
-  import { notFound } from 'next/navigation'
-  import { compile, evaluate, run } from '@mdx-js/mdx'
-  import { join } from 'path'
-  import fs from 'fs'
-  import * as runtime from 'react/jsx-runtime'
-  import remarkFrontmatter from 'remark-frontmatter'
-  
-  export default async function PostDetailPage({ params: { slug } }) {
-    try {
-      // console.log(slug)
-      const { title, date, content } = getPostBySlug(slug, [
-        'title',
-        'slug',
-        'date',
-        'content',
-      ])
-      // const fullPath = join(process.cwd(), '_posts', )
-      const code = await compile(content, { outputFormat: 'function-body' })
-      const yields = await run(code, { ...runtime })
-  
-      console.log(date)
-      return (
-        <>
-          <h1>{title}</h1>
-          <p>{date.toLocaleString('zh-CN', {})}</p>
-          <yields.default></yields.default>
-        </>
-      )
-    } catch (e) {
-      console.warn(e)
-      notFound()
+  const ref = useRef<HTMLCanvasElement>(null)
+  const CIRCLE_WIDTH = 30
+
+  console.log('effect')
+  const onMouseDown = (e: React.MouseEvent<HTMLElement>) => {
+    const x = e.pageX,
+      y = e.pageY
+    console.log(x, y)
+    const canvas = ref.current
+    const ctx = canvas?.getContext('2d')
+    if (!canvas || !ctx) {
+      return
     }
-  }`)
+    canvas.width = canvas.offsetWidth
+    canvas.height = canvas.offsetHeight
+    touchStart(ctx, x, y)
+    const cursorMove = (e: MouseEvent) => {
+      const x = e.offsetX,
+        y = e.offsetY
+      moving(ctx, x, y)
+    }
+    const cursorDone = (e: MouseEvent) => {
+      const x = e.offsetX,
+        y = e.offsetY
+      // moving(ctx, x, y)
+      document.removeEventListener('mousedown', cursorMove)
+      document.removeEventListener('mouseup', cursorDone)
+    }
 
-  const { getRootProps } = useButton()
+    document.addEventListener('mousemove', cursorMove)
+    document.addEventListener('mouseup', cursorDone)
+  }
 
-  const editorContentHandler = (
-    content: string | undefined,
-    env: editor.IModelContentChangedEvent,
-  ) => {
-    content && setContent(content)
+  function touchStart(ctx: CanvasRenderingContext2D, x: number, y: number) {
+    ctx.beginPath()
+    ctx.strokeStyle = '#000'
+    ctx.moveTo(x, y)
+    ctx.arc(x, y, CIRCLE_WIDTH, 0, 2 * Math.PI)
+    ctx.stroke()
+  }
+
+  function moving(ctx: CanvasRenderingContext2D, x: number, y: number) {
+    ctx.beginPath()
+    ctx.lineTo(x, y)
+    ctx.stroke()
   }
 
   return (
     <>
-      <Editor
-        height="90vh"
-        defaultLanguage="javascript"
-        defaultValue={content}
-        onChange={editorContentHandler}
-      />
-
-      <Button>button click</Button>
-      <button
-        type="button"
-        {...getRootProps()}
-      >
-        Click Me
-      </button>
+      <canvas
+        ref={ref}
+        className="w-screen h-screen"
+        onMouseDown={onMouseDown}
+      ></canvas>
     </>
   )
 }
