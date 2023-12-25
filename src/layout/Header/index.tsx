@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function Header() {
   return (
-    <header className={styles.gradient}>
+    <header className={styles.gradient} id="header">
       <nav className="w-full h-16 flex justify-between items-center px-8">
         <h1 className="text-2xl">Tom's Blog</h1>
         <ul className="flex [&>li]:mx-6 [&>li>a]:flex">

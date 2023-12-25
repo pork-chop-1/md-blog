@@ -10,7 +10,6 @@ export default function Main() {
   const allPosts = getAllPosts({
     fields: ['title', 'content', 'slug', 'date', 'description', 'img', 'tags'],
   })
-  console.log(allPosts.map((v) => v.slug))
   return (
     <div className='mb-4'>
       <div className={styles.bg}>

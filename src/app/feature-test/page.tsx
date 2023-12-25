@@ -5,9 +5,20 @@ import { useEffect, useRef } from 'react'
 
 export default function FeatureTest() {
   const ref = useRef<HTMLCanvasElement>(null)
-  const CIRCLE_WIDTH = 30
+  const CIRCLE_WIDTH = 20
 
   console.log('effect')
+
+  useEffect(() => {
+    const canvas = ref.current
+    if (!canvas) {
+      return
+    }
+    canvas.width = canvas.offsetWidth * window.devicePixelRatio
+    canvas.height = canvas.offsetHeight * window.devicePixelRatio
+    
+  }, [])
+
   const onMouseDown = (e: React.MouseEvent<HTMLElement>) => {
     const x = e.pageX,
       y = e.pageY
@@ -17,8 +28,10 @@ export default function FeatureTest() {
     if (!canvas || !ctx) {
       return
     }
-    canvas.width = canvas.offsetWidth
-    canvas.height = canvas.offsetHeight
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio)
+    // canvas.width = canvas.offsetWidth
+    // canvas.height = canvas.offsetHeight
+    ctx.strokeStyle = '#000'
     touchStart(ctx, x, y)
     const cursorMove = (e: MouseEvent) => {
       const x = e.offsetX,
@@ -28,7 +41,8 @@ export default function FeatureTest() {
     const cursorDone = (e: MouseEvent) => {
       const x = e.offsetX,
         y = e.offsetY
-      // moving(ctx, x, y)
+      // console.log(x, y, 'done')
+      moving(ctx, x, y)
       document.removeEventListener('mousedown', cursorMove)
       document.removeEventListener('mouseup', cursorDone)
     }
@@ -39,15 +53,16 @@ export default function FeatureTest() {
 
   function touchStart(ctx: CanvasRenderingContext2D, x: number, y: number) {
     ctx.beginPath()
-    ctx.strokeStyle = '#000'
+    // ctx.arc(x, y, CIRCLE_WIDTH, 0, 2 * Math.PI)
     ctx.moveTo(x, y)
-    ctx.arc(x, y, CIRCLE_WIDTH, 0, 2 * Math.PI)
     ctx.stroke()
   }
 
   function moving(ctx: CanvasRenderingContext2D, x: number, y: number) {
-    ctx.beginPath()
+    // console.log(x, y)
+    // ctx.beginPath()
     ctx.lineTo(x, y)
+    ctx.moveTo(x, y)
     ctx.stroke()
   }
 

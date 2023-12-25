@@ -20,6 +20,9 @@ dependencies:
   gray-matter:
     specifier: ^4.0.3
     version: registry.npmmirror.com/gray-matter@4.0.3
+  gsap:
+    specifier: ^3.12.4
+    version: registry.npmmirror.com/gsap@3.12.4
   hastscript:
     specifier: ^8.0.0
     version: registry.npmmirror.com/hastscript@8.0.0
@@ -1076,6 +1079,12 @@ packages:
       kind-of: registry.npmmirror.com/kind-of@6.0.3
       section-matter: registry.npmmirror.com/section-matter@1.0.0
       strip-bom-string: registry.npmmirror.com/strip-bom-string@1.0.0
+    dev: false
+
+  registry.npmmirror.com/gsap@3.12.4:
+    resolution: {integrity: sha512-1ByAq8dD0W4aBZ/JArgaQvc0gyUfkGkP8mgAQa0qZGdpOKlSOhOf+WNXjoLimKaKG3Z4Iu6DKZtnyszqQeyqWQ==, tarball: https://registry.npmmirror.com/gsap/-/gsap-3.12.4.tgz}
+    name: gsap
+    version: 3.12.4
     dev: false
 
   registry.npmmirror.com/hasown@2.0.0:

@@ -127,3 +127,10 @@ export function getTagMap() {
   }, {} as { [key: string]: any })
   return tagMap
 }
+
+export function dealImagePath(image: string, slug: string) {
+  if (/^\.\//.test(image)) {
+    image = `/assets/${slug}/${image.substring(2)}`
+  }
+  return image
+}

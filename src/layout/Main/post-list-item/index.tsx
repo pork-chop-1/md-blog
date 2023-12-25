@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { dealImagePath } from '@/lib/api'
 
 export default function PostListItem({
   title,
@@ -20,9 +21,7 @@ export default function PostListItem({
 }) {
   let imageContainer = <></>
   if (image) {
-    if (/^\.\//.test(image)) {
-      image = `/assets/${slug}/${image.substring(2)}`
-    }
+    image = dealImagePath(image, slug)
     imageContainer = (
       <Link
         className="w-full max-h-[220px] overflow-hidden object-cover block"

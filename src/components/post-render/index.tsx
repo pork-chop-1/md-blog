@@ -26,6 +26,8 @@ import {h} from 'hastscript'
 import EscapeTag from './replace/escape-tag'
 import LinkTag from './replace/link-tag'
 
+import './index.scss'
+
 export default function PostRender({ content, slug }: { content: string, slug: string }) {
   // https://unifiedjs.com/explore/package/rehype-react/#use
   const processor = unified()
@@ -55,7 +57,7 @@ export default function PostRender({ content, slug }: { content: string, slug: s
   const ContentProcessed = processor.processSync(content).result
 
   // console.log(ContentProcessed)
-  return ContentProcessed
+  return <div id="article-rendered">{ContentProcessed}</div>
 }
 
 
