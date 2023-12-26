@@ -7,6 +7,7 @@ import ButtonsSide from '@/components/buttons-side'
 import Header from '@/layout/Header'
 import Image from 'next/image'
 import Footer from '@/layout/Footer'
+import DocumentToc from '@/components/document-toc'
 
 export default async function PostDetailPage({
   params,
@@ -49,7 +50,9 @@ export default async function PostDetailPage({
               slug={params.slug}
             />
           </article>
-          <aside className='w-[240px]'></aside>
+          <aside className='w-[240px]'>
+            <DocumentToc content={content}/>
+          </aside>
         </div>
         <ButtonsSide />
         <Footer />
