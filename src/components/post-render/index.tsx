@@ -17,17 +17,20 @@ import StyleTag from './replace/style-tag'
 import Link from 'next/link'
 import Image from 'next/image'
 import ImageTag from './replace/img-tag'
-
-import { Node } from 'mdast'
-import { VFile } from 'vfile'
-import { visit } from 'unist-util-visit'
-import { ContainerDirective } from 'mdast-util-directive'
-import { h } from 'hastscript'
-import EscapeTag from './replace/escape-tag'
 import LinkTag from './replace/link-tag'
+import EscapeTag from './replace/escape-tag'
 
 import './index.scss'
 import { headerLinkExtension } from '@/lib/unified/header'
+import { escapeRemarkPlugin } from '@/lib/unified/escape'
+
+import CodeEditor from '@/components/code-editor';
+
+// 添加自定义的玩意
+const customizeTags = {
+  escape: EscapeTag,
+  codeeditor: CodeEditor
+}
 
 export default function PostRender({
   content,
@@ -40,14 +43,13 @@ export default function PostRender({
   const processor = unified()
     .use(remarkParse)
     .use(remarkDirective) // ::命令
-    .use(myRemarkPlugin)
+    .use(escapeRemarkPlugin)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeHighlight)
     .use(rehypeRaw) // 处理md mixin html，尤其script
     .use(rehypeStringify, { allowDangerousHtml: true })
     .use(headerLinkExtension)
-    // @ts-expect-error escape is defined by me
     .use(rehypeReact, {
       // @ts-expect-error: the react types are missing.
       Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs,
@@ -68,13 +70,13 @@ export default function PostRender({
             slug={slug}
           ></ImageTag>
         ),
-        escape: EscapeTag,
         link: (props) => (
           <LinkTag
             {...props}
             slug={slug}
           />
         ),
+        ...customizeTags
       },
       passKeys: true,
     })
@@ -82,40 +84,4 @@ export default function PostRender({
 
   // console.log(ContentProcessed)
   return <div id="article-rendered">{ContentProcessed}</div>
-}
-
-function myRemarkPlugin() {
-  return (tree: Node, file: VFile) => {
-    visit(
-      tree,
-      'containerDirective',
-      (node: ContainerDirective, idx, parent) => {
-        // clear content
-        if (node.name === 'escape') {
-          // node.children = []
-
-          const data = node.data || (node.data = {})
-          const tagName = 'escape'
-
-          data.hName = tagName
-          // data.hProperties = h(tagName, { class: `` }).properties
-
-          // console.log(node)
-          let textContent = ''
-          node.children.forEach((v) => {
-            if (v.type === 'html') {
-              textContent += v.value
-            }
-          })
-          node.children = [
-            {
-              // @ts-expect-error no text type but works
-              type: 'text',
-              value: `${textContent}`,
-            },
-          ]
-        }
-      },
-    )
-  }
 }

@@ -20,12 +20,12 @@ export function headerLinkExtension() {
       if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].indexOf(node.tagName) !== -1) {
         // @ts-ignore
         const text = slugs.slug(toString(node))
-        node.properties.id = text
+        node.properties.id = `${process.env.NEXT_PUBLIC_ID_PREFIX}-${text}`
         node.children= [{
           type: 'element',
           tagName: 'a',
           properties: {
-            href: '#' + text,
+            href: `#${process.env.NEXT_PUBLIC_ID_PREFIX}-${text}`,
             ...node.properties
           },
           children: node.children
@@ -36,16 +36,3 @@ export function headerLinkExtension() {
   }
 }
 
-
-export function getHeaderExtension() {
-  return (tree: Node, file: VFile) => {
-    console.log(tree)
-    visit(tree, 'element', (node: HtmlNode) => {
-      if (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].indexOf(node.tagName) !== -1) {
-        console.log(node)
-      }else {
-        return SKIP
-      }
-    })
-  }
-}
