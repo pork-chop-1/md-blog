@@ -60,7 +60,7 @@ export default async function PostDetailPage({
               slug={params.slug}
             />
           </article>
-          <aside className="w-[240px] sticky max-h-screen top-0">
+          <aside className="w-[240px] sticky max-h-[calc(100vh-2rem)] top-0 pt-8">
             <DocumentToc content={content} />
           </aside>
         </div>
