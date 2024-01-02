@@ -9,11 +9,14 @@ import _ from 'lodash-es'
 import TocItem from './toc-item'
 import { useEffect, useRef, useState } from 'react'
 
+import gsap from 'gsap'
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+
 export type headingType = {
   title: string,
   id: string,
   level: number,
-  active?: string,
+  active: string | null,
   children: headingType[]
 }
 
@@ -72,7 +75,7 @@ export default function DocumentToc({ content }: { content: string }) {
   const [active, setActive] = useState<string | null>(null)
   const headers = useRef<NodeListOf<HTMLElement> | null>(null)
   // 获取滚动到的标题位置
-  window.addEventListener(
+  typeof window !== "undefined" && window.addEventListener(
     'scroll',
     _.throttle((e) => {
       if (headers.current == null) {
@@ -85,28 +88,41 @@ export default function DocumentToc({ content }: { content: string }) {
       }
       const list = headers.current
       // const headers = document.querySelectorAll('#article-rendered .header-creator')
-      let loc = null
+      let activeId = null
       for (let i = 0; i < list.length; i++) {
         if (list[i].getBoundingClientRect().top >= 0) {
-          loc = list[i].getAttribute('id')
+          activeId = list[i].getAttribute('id')
           break
         }
       }
-      setActive(loc)
+      setActive(activeId)
     }, 200),
   )
 
+  const wrapper = useRef(null)
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.registerPlugin(ScrollToPlugin)
+    }, wrapper)
+  }, [])
+
+  function ItemClickHandler(e: React.MouseEvent<HTMLAnchorElement>) {
+    const href = e.currentTarget.getAttribute('href') || ''
+    gsap.to(window, {duration: 0.5, scrollTo:{y:href, offsetY:0}});
+  }
+
   return (
-    <div className="document-toc-container flex flex-col">
+    <div className="document-toc-container flex flex-col" ref={wrapper}>
       <h2 className="mb-4 text-xl">In this article</h2>
       <ul className="h-full">
         {listNest.map((v, i) => (
           <li key={v.title}>
             <TocItem
-              href={`#${process.env.NEXT_PUBLIC_ID_PREFIX}-${v.id}`}
+              id={`${v.id}`}
               level={v.level}
               active={active}
               subList={v.children}
+              onClick={ItemClickHandler}
             >
               {v.title}
             </TocItem>

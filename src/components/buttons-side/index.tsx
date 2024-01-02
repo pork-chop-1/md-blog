@@ -2,7 +2,6 @@
 
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useEffect, useRef, useState } from 'react'
 import styles from './index.module.scss'
 
@@ -16,7 +15,7 @@ export default function ButtonsSide() {
     const ctx = gsap.context(() => {
       // https://gsap.com/community/forums/topic/35440-warning-extra-attributes-from-the-server-style/
       // put register in useEffect
-      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
+      gsap.registerPlugin(ScrollTrigger)
       ScrollTrigger.create({
         trigger: '#header',
         onUpdate: (self) => {
