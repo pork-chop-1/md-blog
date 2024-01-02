@@ -37,7 +37,7 @@ img: ./ringworld-inside.jpg
 }
 </style>
 
-![ringworld](./ringworld.jpg)
+![ringworld](./ringworld-inside.jpg)
 
 
 

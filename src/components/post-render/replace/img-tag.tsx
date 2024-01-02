@@ -16,18 +16,29 @@ export default function ImageTag({ src, alt, style, slug }: ImageTagParam) {
   // ./ 开头的表示引用文档相对路径
   if (/^\.\//.test(src)) {
     src = `/assets/${slug}/${src.substring(2)}`
-  }
-
-  return (
+    return <img 
+    style={style}
+    alt={alt || ''}
+    src={src}>
+    </img>
+  } else if(/^\//.test(src)) {
     <Image
       style={style}
       alt={alt || ''}
       src={src}
-      width={200}
-      height={200}
+      width={Number(style?.width) || 800}
+      height={Number(style?.height) || 420}
       // lazyBoundary=''
       // loading='lazy'
       // priority={true}
     ></Image>
+  }
+
+  return (
+    <img
+      style={style}
+      alt={alt || ''}
+      src={src}
+    ></img>
   )
 }

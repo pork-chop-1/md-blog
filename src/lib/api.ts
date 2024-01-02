@@ -128,9 +128,11 @@ export function getTagMap() {
   return tagMap
 }
 
-export function dealImagePath(image: string, slug: string) {
+export function dealImagePath(image: string, slug: string): [path: string, isRelative: boolean] {
+  let isRelative = false
   if (/^\.\//.test(image)) {
     image = `/assets/${slug}/${image.substring(2)}`
+    isRelative = true
   }
-  return image
+  return [image, isRelative]
 }

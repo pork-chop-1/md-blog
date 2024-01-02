@@ -14,6 +14,9 @@ dependencies:
   '@uiw/react-codemirror':
     specifier: ^4.21.21
     version: registry.npmmirror.com/@uiw/react-codemirror@4.21.21(@babel/runtime@7.23.2)(@codemirror/autocomplete@6.11.1)(@codemirror/language@6.9.3)(@codemirror/lint@6.4.2)(@codemirror/search@6.5.5)(@codemirror/state@6.3.3)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.22.3)(codemirror@6.0.1)(react-dom@18.2.0)(react@18.2.0)
+  canvas-nest.js:
+    specifier: ^2.0.4
+    version: registry.npmmirror.com/canvas-nest.js@2.0.4
   file-type:
     specifier: ^18.7.0
     version: registry.npmmirror.com/file-type@18.7.0
@@ -846,6 +849,14 @@ packages:
     resolution: {integrity: sha512-/Et7DwLqpjS47JPEcz6VnxU9PwcIdVi0ciLXRWBQdj1XFye68pSQYpV0QtPTfUKWuOaEig+/Vez2l74eDc1tPQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001558.tgz}
     name: caniuse-lite
     version: 1.0.30001558
+
+  registry.npmmirror.com/canvas-nest.js@2.0.4:
+    resolution: {integrity: sha512-Wgc+39fQBIP8fm9+Rq+Zt6+QLHZRsIKpaOQPL5KcWPlXTAalCKY4KCuklY7qzzZqBRF/t2APIrk+PuRw6ZlOog==, tarball: https://registry.npmmirror.com/canvas-nest.js/-/canvas-nest.js-2.0.4.tgz}
+    name: canvas-nest.js
+    version: 2.0.4
+    dependencies:
+      size-sensor: registry.npmmirror.com/size-sensor@0.2.6
+    dev: false
 
   registry.npmmirror.com/ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/ccount/-/ccount-2.0.1.tgz}
@@ -2654,6 +2665,12 @@ packages:
     dependencies:
       extend-shallow: registry.npmmirror.com/extend-shallow@2.0.1
       kind-of: registry.npmmirror.com/kind-of@6.0.3
+    dev: false
+
+  registry.npmmirror.com/size-sensor@0.2.6:
+    resolution: {integrity: sha512-0EZ0tXXjyRl9R9+JpoBdH57Xpnbf5NTyDdj7fnFL6KqCsdKyah286ShMflnV2SonnrSFH4OAT/52Jy8qqnoerg==, tarball: https://registry.npmmirror.com/size-sensor/-/size-sensor-0.2.6.tgz}
+    name: size-sensor
+    version: 0.2.6
     dev: false
 
   registry.npmmirror.com/source-map-js@1.0.2:

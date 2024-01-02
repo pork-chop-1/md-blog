@@ -21,27 +21,42 @@ export default function PostListItem({
 }) {
   let imageContainer = <></>
   if (image) {
-    image = dealImagePath(image, slug)
+    let [path, isRelative] = dealImagePath(image, slug)
+    let imgTag = (
+      <Image
+        src={path}
+        alt={title}
+        width={960}
+        height={320}
+      />
+    )
+    if (isRelative) {
+      imgTag = (
+        <img
+          src={path}
+          alt={title}
+          width={960}
+          height={320}
+        ></img>
+      )
+    }
     imageContainer = (
-      <Link
+      // https://github.com/vercel/next.js/discussions/17346#discussioncomment-84699
+      // 有关script dangerous html 在点击Link加载不正确
+      <a
         className="w-full max-h-[220px] overflow-hidden object-cover block"
         href={link}
       >
-        <Image
-          src={image}
-          alt="some"
-          width={960}
-          height={320}
-        />
-      </Link>
+        {imgTag}
+      </a>
     )
   }
   return (
     <div className="flex flex-col w-full rounded-xl overflow-hidden bg-white/80">
       {imageContainer}
-      <div className='p-8'>
+      <div className="p-8">
         <h2 className="text-2xl font-bold">
-          <Link href={link}>{title}</Link>
+          <a href={link}>{title}</a>
         </h2>
         <p>{description}</p>
         <div className="flex justify-between items-center">

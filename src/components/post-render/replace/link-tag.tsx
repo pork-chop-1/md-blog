@@ -2,7 +2,7 @@ import { LinkHTMLAttributes } from 'react'
 
 export default function LinkTag(
   props: {
-    slug: string
+    slug?: string
   } & LinkHTMLAttributes<HTMLLinkElement>,
 ) {
   let href = props.href
@@ -11,5 +11,7 @@ export default function LinkTag(
     href = `/assets/${props.slug}/${props.href.substring(2)}`
   }
 
-  return <link {...props} href={href}></link>
+  // typeof props.slug !== 'undefined' && delete Object.create(props)['slug']
+  const {slug: _, ...otherProp} = props
+  return <link {...otherProp} href={href}></link>
 }

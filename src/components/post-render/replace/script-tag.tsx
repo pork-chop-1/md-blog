@@ -1,10 +1,11 @@
 'use client'
 
 import { ScriptHTMLAttributes } from "react"
+import Script from "next/script"
 
 export default function ScriptTag(props: {
   children?: string,
-  slug: string
+  slug?: string
 } & ScriptHTMLAttributes<HTMLScriptElement>) {
   // window.addEventListener('load', () => {
   // })
@@ -20,5 +21,6 @@ export default function ScriptTag(props: {
   }
 
   delete props.children
+  delete props.slug
   return <script {...props} src={src} dangerouslySetInnerHTML={{__html: inside}}></script>
 }
