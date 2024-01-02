@@ -118,9 +118,9 @@ export function getAllPosts<T extends string>({
 }
 
 export function getTagMap() {
-  const tagList: string[] = getAllPosts({ fields: ['tags'] }).map(v => v.tags)
+  const tagList: string[][] = getAllPosts({ fields: ['tags'] }).map(v => v.tags)
   const tagMap = tagList.reduce((prev, cur) => {
-    cur.split(' ').filter(v => v !== '').forEach(v => {
+    cur.filter(v => v !== '').forEach(v => {
       prev[v] = (prev[v] || 0) + 1
     })
     return prev
