@@ -13,6 +13,7 @@
     "@monaco-editor/react": "^4.6.0",
     "@mui/base": "5.0.0-beta.23",
     "@uiw/react-codemirror": "^4.21.21",
+    "@vercel/analytics": "^1.1.1",
     "canvas-nest.js": "^2.0.4",
     "file-type": "^18.7.0",
     "github-slugger": "^2.0.0",
@@ -24,6 +25,7 @@
     "mdast": "^3.0.0",
     "mdast-util-directive": "^3.0.0",
     "monaco-editor": "^0.44.0",
+    "mongodb": "^6.3.0",
     "next": "14.0.1",
     "react": "^18",
     "react-dom": "^18",
@@ -41,8 +43,8 @@
     "sass": "^1.69.5",
     "unified": "^11.0.4",
     "unist-util-visit": "^5.0.0",
-    "vfile": "^6.0.1",
-    "@vercel/analytics": "^1.1.1"
+    "vercel": "^33.0.1",
+    "vfile": "^6.0.1"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.12",
