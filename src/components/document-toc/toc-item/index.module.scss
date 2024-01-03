@@ -9,10 +9,10 @@
   justify-content: center;
   flex-shrink: 0;
   transition: .2s transform linear;
-  transform: rotate(0);
+  transform: rotate(-90deg);
 
   &.expand {
-    transform: rotate(-90deg);
+    transform: rotate(0);
   }
 }
 

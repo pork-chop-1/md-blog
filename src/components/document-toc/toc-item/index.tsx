@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react'
 import { headingType } from '..'
 import styles from './index.module.scss'
 import gsap from 'gsap'
-import _ from 'lodash-es'
 
 export default function TocItem({
   children,
@@ -30,36 +29,30 @@ export default function TocItem({
     onClick && onClick(e)
   }
 
-  const [isExpand, setIsExpand] = useState(true)
+  const [isExpand, setIsExpand] = useState(false)
   const subMenuRef = useRef<null | HTMLUListElement>(null)
-  const [ulHeight, setUlHeight] = useState<number | string>('auto')
-  const height = useRef<number | null>(null)
   function expandBtnHandler() {
-    // if (subMenuRef.current) {
-    //   console.log('animate!')
-    //   if (isExpand) {
-    //     height.current = subMenuRef.current?.offsetHeight
-    //     gsap.to(subMenuRef.current, { height: '0', duration: 0.2 })
-    //   } else {
-    //     // auto 卡顿
-    //     var tl = gsap.timeline()
-    //     tl.to(subMenuRef.current, { height: height.current, duration: 0.2 })
-    //     tl.to(subMenuRef.current, { height: 'auto', duration: 0, delay: 0.2 })
-    //   }
-    // }
     setIsExpand(!isExpand)
   }
 
   useEffect(() => {
-    if (isExpand) {
-      height.current = subMenuRef.current?.offsetHeight || null
-      setUlHeight(0)
-    } else {
-      // auto 卡顿
-      setUlHeight(height.current || 0)
-      _.delay(() => {setUlHeight('auto')}, 200)
-    }
+    const ctx = gsap.context(() => {
+      // console.log('animate!', subMenuRef.current?.scrollHeight, isExpand)
+      if (!isExpand) {
+        gsap.to(subMenuRef.current, { height: 0, duration: 0.2 })
+      } else {
+        gsap.to(subMenuRef.current, { height: 'auto', duration: 0.2 })
+      }
+    }, subMenuRef)
+
+    // return () => ctx.revert()
   }, [isExpand])
+
+  useEffect(() => {
+    if (active === idWithPrefix && active != null) {
+      setIsExpand(true)
+    }
+  }, [active])
 
   const expandBtn =
     subList.length > 0 ? (
@@ -111,7 +104,6 @@ export default function TocItem({
           isExpand ? '' : styles['close']
         }`}
         ref={subMenuRef}
-        style={{height: ulHeight}}
       >
         {subList.map((v) => (
           <TocItem

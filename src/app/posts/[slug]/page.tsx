@@ -74,7 +74,7 @@ export default async function PostDetailPage({
             <DocumentToc content={content} />
           </aside>
         </main>
-        <ButtonsSide />
+        {/* <ButtonsSide /> */}
         <Footer />
         {/* <CanvasNest /> */}
       </>
