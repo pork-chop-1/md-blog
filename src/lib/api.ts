@@ -79,7 +79,7 @@ export function getAllPosts<T extends string>({
   fields,
   limit = Infinity,
   offset = 0,
-  orderBy = 'asc'
+  orderBy = 'desc'
 }: {
   fields: T[],
   limit?: number,

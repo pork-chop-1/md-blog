@@ -25,11 +25,13 @@ import { headerLinkExtension } from '@/lib/unified/header'
 import { escapeRemarkPlugin } from '@/lib/unified/escape'
 
 import CodeEditor from '@/components/code-editor';
+import CodePen from './custom/CodePen'
 
 // 添加自定义的玩意
 const customizeTags = {
   escape: EscapeTag,
-  codeeditor: CodeEditor
+  codeeditor: CodeEditor,
+  codepen: CodePen
 }
 
 export default function PostRender({
