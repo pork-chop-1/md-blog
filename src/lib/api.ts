@@ -2,55 +2,91 @@ import matter from 'gray-matter'
 import fs from 'fs'
 import { join } from 'path'
 
+const POST_ROOT = '_posts'
+
+type dataType = { [key: string]: any }
+type postDataType = { data: dataType, content: string }
+type postType = { [key: string]: postDataType }
+
+const UPDATE_GAP = 5
+let allPosts: postType
+let prevTime = 0
+
 // 获取post下所有文件名称
 export function getPostSlugs() {
-  return fs.readdirSync(join(process.cwd(), '_posts'))
+  const pathList: string[] = []
+  function checkRevision(path: string) {
+    const pathJoined = join(process.cwd(), POST_ROOT, path)
+    const folderPath = _getMdFileFolder(path)?.folderPath
+    
+    if (!folderPath) {
+      const folders = fs.readdirSync(pathJoined)
+      folders.forEach(v => checkRevision(join(path, v)))
+    } else {
+      pathList.push(path)
+    }
+  }
+  checkRevision('')
+  return pathList
+}
+
+function _matchLastPath(path: string) {
+  const match = [...path.matchAll(/^(.+)[\\\/](.+)$/g)]
+  if(match.length === 0) {
+    return ['', path]
+  }
+  return [match[0][1], match[0][2]]
 }
 
 /**
- * @param {string} slug
- * @param {string[]} fields
- * https://chat.openai.com/c/3907bd02-0b27-4232-a5b5-2ad3aa90eacd
+ * get relative folder md file path and folder path
  */
-export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
-  const titleWithoutPostfix = slug.replace(/\.md$/, '')
-  // 包含文件夹
+function _getMdFileFolder(path: string) {
   let filePath
+  let folderPath
+  
+  let [parentFolder, folderName] = _matchLastPath(path)
+
   if (
-    fs.existsSync(join(process.cwd(), '_posts', `${titleWithoutPostfix}.md`))
+    fs.existsSync(join(parentFolder, `${folderName}/${folderName}.md`))
   ) {
-    filePath = join(process.cwd(), '_posts', `${titleWithoutPostfix}.md`)
+    filePath = join(parentFolder, `${folderName}/${folderName}.md`)
+    folderPath = join(parentFolder, folderName)
   } else if (
     fs.existsSync(
-      join(process.cwd(), '_posts', `${titleWithoutPostfix}/index.md`),
+      join(parentFolder, `${folderName}/index.md`),
     )
   ) {
-    filePath = join(process.cwd(), '_posts', `${titleWithoutPostfix}/index.md`)
-  } else if (
-    fs.existsSync(
-      join(
-        process.cwd(),
-        '_posts',
-        `${titleWithoutPostfix}/${titleWithoutPostfix}.md`,
-      ),
-    )
-  ) {
-    filePath = join(
-      process.cwd(),
-      '_posts',
-      `${titleWithoutPostfix}/${titleWithoutPostfix}.md`,
-    )
+    filePath = join(parentFolder, `${folderName}/index.md`)
+    folderPath = join(parentFolder, folderName)
   }
+  return { filePath, folderPath }
+}
 
-  if (!filePath) {
-    return null
+function _getPostBySlug(slug: string) {
+  // 包含文件夹
+  let postData: postDataType
+  if (allPosts) {
+    postData = allPosts[slug]
+  } else {
+
+    const filePath = _getMdFileFolder(slug)?.filePath
+
+    if (!filePath) {
+      return null
+    }
+
+    const fileContent = fs.readFileSync(filePath, 'utf-8')
+    // matter: 读取md文件各种信息
+    // data: 首部信息， content：余下信息
+    postData = matter(fileContent) as postDataType
   }
+  return postData
+}
 
-  const fileContent = fs.readFileSync(filePath, 'utf-8')
-  // matter: 读取md文件各种信息
-  // data: 首部信息， content：余下信息
-  const { data, content } = matter(fileContent)
-
+function _filterPostByFields<T extends string>(postData: postDataType, slug: string, fields: T[]) {
+  const titleWithoutPostfix = slug.replace(/\.md$/, '')
+  const { content, data } = postData
   const res: { [key in T]: any } = {} as { [key in T]: any }
   fields.forEach((field) => {
     if (field === 'content') {
@@ -68,9 +104,20 @@ export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
   return res
 }
 
-const UPDATE_GAP = 5
-let allPosts: unknown
-let prevTime = 0
+/**
+ * @param {string} slug
+ * @param {string[]} fields
+ * https://chat.openai.com/c/3907bd02-0b27-4232-a5b5-2ad3aa90eacd
+ */
+export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
+  console.log(slug)
+  const postData = _getPostBySlug(slug)
+
+  if (!postData) {
+    return null
+  }
+  return _filterPostByFields(postData, slug, fields)
+}
 
 /**
  * @param {string[]} fields
@@ -102,17 +149,22 @@ export function getAllPosts<T extends string>({
     _compare = (l: any, r: any) => -compareFn(l, r)
   }
 
-  if (Date.now() - prevTime < UPDATE_GAP * 1000) {
+  if (Date.now() - prevTime > UPDATE_GAP * 1000) {
     prevTime = Date.now()
-  } else {
-    allPosts = getPostSlugs()
-      .map((slug) => {
-        return getPostBySlug(slug, fields)
-      })
+    
+    allPosts = getPostSlugs().reduce((postMap, path) => {
+      const postData = _getPostBySlug(path)
+      postData && (postMap[path] = postData)
+      return postMap
+    }, {} as postType)
   }
+  console.log(allPosts)
 
-  return (allPosts as ({ [key in T]: any; } | null)[])
-    .filter((v): v is { [key in T]: any } => v != null) // notice! predicate v is 
+  return Object.keys(allPosts)
+    .map(path => {
+      let [_, lastPath] = _matchLastPath(path)
+      return _filterPostByFields(allPosts[path], lastPath, fields)
+    })
     .sort((l, r) => _compare(l, r))// 按时间从大到小排序
     .slice(offset, limit)
 }

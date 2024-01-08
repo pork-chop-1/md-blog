@@ -21,10 +21,10 @@ export function escapeRemarkPlugin() {
           data.hName = tagName
           // data.hProperties = h(tagName, { class: `` }).properties
 
-          // console.log(node)
           let textContent = ''
           node.children.forEach((v) => {
-            if (v.type === 'html') {
+            // @ts-expect-error no text type
+            if (v.type === 'html' || v.type === 'text') {
               textContent += v.value
             }
           })

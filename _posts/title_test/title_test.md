@@ -4,7 +4,7 @@ date: 2023-12-01 00:00:00
 tags: test
 ---
 
-## title test
+## title test css doodle start
 
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaque minus soluta minima perspiciatis aperiam dolorum commodi ipsam aspernatur tempora sequi temporibus magni perferendis nemo vel iusto dolore.
 
@@ -17,6 +17,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaq
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaque minus soluta minima perspiciatis aperiam dolorum commodi ipsam aspernatur tempora sequi temporibus magni perferendis nemo vel iusto dolore.
 
 #### 1.1.1
+
+`<codePen title="some" src="https://codepen.io/gambhirsharma/embed/jOxXxXa?default-tab=html%2Cresult"/>`
 
 ## 2
 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaque minus soluta minima perspiciatis aperiam dolorum commodi ipsam aspernatur tempora sequi temporibus magni perferendis nemo vel iusto dolore.
@@ -33,7 +35,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaq
 >
 > Like that.
 
-
 | Heading 1 | Heading 2 | Heading 3 |
 | --------- | --------- | --------- |
 | cell 1    | cell 2    | cell 3    |
@@ -45,4 +46,36 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ad explicabo, itaq
   console.log('hello world')
 </CodeEditor>
 
-<codePen title="some" src="https://codepen.io/gambhirsharma/embed/jOxXxXa?default-tab=html%2Cresult"/>
+
+css doodle start
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/css-doodle/0.38.0/css-doodle.min.js"></script> -->
+
+:::escape
+:::
+
+css doodle end
+
+<cssdoodle click-to-update rule="
+    @grid: 18 / 100vmax / #0a0c27;
+    --hue: calc(180 + 1.5 * @x * @y);
+    background: hsl(var(--hue), 50%, 70%);
+    margin: -.5px;
+    transition: @r(.5s) ease;
+    clip-path: polygon(@p(
+      '0 0, 100% 0, 100% 100%',
+      '0 0, 100% 0, 0 100%',
+      '0 0, 100% 100%, 0 100%',
+      '100% 0, 100% 100%, 0 100%'
+    ));">
+</cssdoodle>
+
+<cssdoodle click-to-update rule="
+    @grid: 18 / 100vmax / #0a0c27;
+    background: rgba(96, 86, 158, @rand(.9));
+transition: .2s ease @rand(200ms);
+transform: rotate(@rand(360deg));
+clip-path: polygon(
+  @rand(100%) 0, 100% @rand(100%), 0 @rand(100%)
+);">
+</cssdoodle>

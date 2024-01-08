@@ -26,12 +26,14 @@ import { escapeRemarkPlugin } from '@/lib/unified/escape'
 
 import CodeEditor from '@/components/code-editor';
 import CodePen from './custom/CodePen'
+import Doodle from '../doodle'
 
 // 添加自定义的玩意
 const customizeTags = {
   escape: EscapeTag,
   codeeditor: CodeEditor,
-  codepen: CodePen
+  codepen: CodePen,
+  cssdoodle: Doodle
 }
 
 export default function PostRender({
@@ -72,6 +74,7 @@ export default function PostRender({
             slug={slug}
           ></ImageTag>
         ),
+        // p: (props) => <div>{props.children as string}</div>,
         link: (props) => (
           <LinkTag
             {...props}

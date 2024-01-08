@@ -3,18 +3,19 @@
 import * as echarts from 'https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.esm.js'
 
 // import { createApp, ref } from 'https://cdn.bootcdn.net/ajax/libs/vue/3.2.47/vue.esm-browser.js'
-// const app = createApp({
-//   setup() {
-//     const message = ref('hello vue!')
-//     const count = ref(0)
-//     return {
-//       message,
-//       count
-//     }
-//   }
-// })
+const { createApp, ref } = Vue
+const app = createApp({
+  setup() {
+    const message = ref('hello vue!')
+    const count = ref(0)
+    return {
+      message,
+      count
+    }
+  }
+})
 
-// app.mount('#vue-app')
+app.mount('#vue-app')
 
 const chart = echarts.init(document.querySelector('.chart-container'))
 chart.setOption({

@@ -16,16 +16,10 @@ img: ./ringworld-inside.jpg
 :::
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.global.min.js" integrity="sha512-KIbZu0J3AOx0bmI4fHEpxyM6/YKIRBgCXDrrF0OBFTHvjDeAZ/vBIvVqZwdehD7dJN228/7lK9KJ55k4ZziQTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.8/vue.global.min.js" integrity="sha512-KIbZu0J3AOx0bmI4fHEpxyM6/YKIRBgCXDrrF0OBFTHvjDeAZ/vBIvVqZwdehD7dJN228/7lK9KJ55k4ZziQTA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 
 <script>
-  const app = Vue.createApp({data() {
-    return {
-      count: 0,
-      message: 'hello vue'
-    }
-  }})
-  app.mount('#vue-app')
+  console.log('inline')
 </script>
 
 <style>
@@ -43,4 +37,4 @@ img: ./ringworld-inside.jpg
 
   <div class="chart-container"></div>
 <link rel="stylesheet" href="./main.css"></link>
-<script type="module" src="./main.js"></script>
+<script type="module" src="./main.js" defer></script>

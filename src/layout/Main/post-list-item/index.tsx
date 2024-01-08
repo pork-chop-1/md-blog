@@ -43,12 +43,12 @@ export default function PostListItem({
     imageContainer = (
       // https://github.com/vercel/next.js/discussions/17346#discussioncomment-84699
       // 有关script dangerous html 在点击Link加载不正确
-      <a
+      <Link
         className="w-full max-h-[220px] overflow-hidden object-cover block"
         href={link}
       >
         {imgTag}
-      </a>
+      </Link>
     )
   }
   return (
@@ -56,7 +56,7 @@ export default function PostListItem({
       {imageContainer}
       <div className="p-8">
         <h2 className="text-2xl font-bold">
-          <a href={link}>{title}</a>
+          <Link href={link}>{title}</Link>
         </h2>
         <p>{description}</p>
         <div className="flex justify-between items-center">
