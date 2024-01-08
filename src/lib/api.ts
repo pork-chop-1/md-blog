@@ -48,17 +48,17 @@ function _getMdFileFolder(path: string) {
   let [parentFolder, folderName] = _matchLastPath(path)
 
   if (
-    fs.existsSync(join(parentFolder, `${folderName}/${folderName}.md`))
+    fs.existsSync(join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`))
   ) {
-    filePath = join(parentFolder, `${folderName}/${folderName}.md`)
-    folderPath = join(parentFolder, folderName)
+    filePath = join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`)
+    folderPath = join(process.cwd(), POST_ROOT, parentFolder, folderName)
   } else if (
     fs.existsSync(
-      join(parentFolder, `${folderName}/index.md`),
+      join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`),
     )
   ) {
-    filePath = join(parentFolder, `${folderName}/index.md`)
-    folderPath = join(parentFolder, folderName)
+    filePath = join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`)
+    folderPath = join(process.cwd(), POST_ROOT, parentFolder, folderName)
   }
   return { filePath, folderPath }
 }
