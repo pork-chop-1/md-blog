@@ -8,13 +8,14 @@ import Image from 'next/image'
 import Footer from '@/layout/Footer'
 import DocumentToc from '@/components/document-toc'
 import { CanvasNest } from '@/components/canvas-nest'
+import LikesBtn from '@/components/likes-btn'
 
 export default async function PostDetailPage({
   params,
 }: {
-  params: { slug: string }
+  params: { slug: string[] }
 }) {
-  const post = getPostBySlug(params.slug, [
+  const post = getPostBySlug(params.slug.join('\/'), [
     'title',
     'content',
     'slug',
@@ -67,11 +68,12 @@ export default async function PostDetailPage({
             </p>
             <PostRender
               content={content}
-              slug={params.slug}
+              slug={params.slug.join('\/')}
             />
           </article>
           <aside className="w-[240px] sticky max-h-[calc(100vh-2rem)] top-0 pt-8">
             <DocumentToc content={content} />
+            <LikesBtn slug={params.slug.join('\/')}/>
           </aside>
         </main>
         {/* <ButtonsSide /> */}

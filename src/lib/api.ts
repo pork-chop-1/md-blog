@@ -110,7 +110,6 @@ function _filterPostByFields<T extends string>(postData: postDataType, slug: str
  * https://chat.openai.com/c/3907bd02-0b27-4232-a5b5-2ad3aa90eacd
  */
 export function getPostBySlug<T extends string>(slug: string, fields: T[]) {
-  console.log(slug)
   const postData = _getPostBySlug(slug)
 
   if (!postData) {
@@ -158,12 +157,11 @@ export function getAllPosts<T extends string>({
       return postMap
     }, {} as postType)
   }
-  console.log(allPosts)
 
   return Object.keys(allPosts)
     .map(path => {
-      let [_, lastPath] = _matchLastPath(path)
-      return _filterPostByFields(allPosts[path], lastPath, fields)
+      // let [_, lastPath] = _matchLastPath(path)
+      return _filterPostByFields(allPosts[path], path.replaceAll('\\', '\/'), fields)
     })
     .sort((l, r) => _compare(l, r))// 按时间从大到小排序
     .slice(offset, limit)

@@ -1,5 +1,6 @@
 // https://nextjs.org/docs/app/building-your-application/optimizing/instrumentation
 
+import dbConnect from '@/lib/mongodb'
 import fs from 'fs'
 import { join } from 'path'
 export async function register() {
@@ -12,4 +13,6 @@ export async function register() {
   //     console.log(data)
   //   })
   // })
+  await dbConnect()
+  console.log('mongodb connected!')
 }

@@ -1,15 +1,42 @@
 // https://github.com/vercel/next.js/blob/canary/examples/with-mongodb/lib/mongodb.ts
+// https://github.com/vercel/next.js/blob/canary/examples/with-mongodb-mongoose/lib/dbConnect.ts
+declare global {
+  var mongoose: any // This must be a `var` and not a `let / const`
+}
 
 import mongoose from "mongoose";
 
-if (!process.env.MONGODB_URI) {
+const MONGODB_URI = process.env.MONGODB_URI!
+if (!MONGODB_URI) {
   throw new Error('Invalid/Missing environment variable: "MONGODB_URI"')
 }
 
-const uri = process.env.MONGODB_URI
+let cached = global.mongoose
 
-async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/test');
-
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+if (!cached) {
+  cached = global.mongoose = { conn: null, promise: null }
 }
+
+async function dbConnect() {
+  if (cached.conn) {
+    return cached.conn
+  }
+  if (!cached.promise) {
+    const opts = {
+      bufferCommands: false,
+    }
+    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+      return mongoose
+    })
+  }
+  try {
+    cached.conn = await cached.promise
+  } catch (e) {
+    cached.promise = null
+    throw e
+  }
+
+  return cached.conn
+}
+
+export default dbConnect
