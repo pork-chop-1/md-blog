@@ -6,6 +6,7 @@ import _ from 'lodash-es'
 function LikesBtn({ slug }: { slug: string }) {
   const [count, setCount] = useState(0)
   const inc = useRef(0)
+  const patchLikes = useRef<_.DebouncedFunc<() => void> | null>(null)
 
   useEffect(() => {
     fetch('/api/likes/' + slug, {
@@ -13,23 +14,18 @@ function LikesBtn({ slug }: { slug: string }) {
     })
       .then((res) => res.json())
       .then((res) => setCount(res))
-  }, [slug])
 
-  const patchLikes = _.debounce(() => {
-    fetch(`/api/likes/${slug}?inc=${inc.current}`, { method: 'PATCH' })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res)
-      })
-    inc.current = 0
-}, 1000, {trailing: false})
+    patchLikes.current = _.debounce(() => {
+      fetch(`/api/likes/${slug}?inc=${inc.current}`, { method: 'PATCH' })
+      inc.current = 0
+    }, 500)
+  }, [slug])
 
   const clickHandler = () => {
     setCount(count + 1)
     inc.current += 1
 
-    patchLikes()
-
+    patchLikes.current && patchLikes.current()
   }
 
   return (

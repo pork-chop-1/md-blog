@@ -27,13 +27,15 @@ import { escapeRemarkPlugin } from '@/lib/unified/escape'
 import CodeEditor from '@/components/code-editor';
 import CodePen from './custom/CodePen'
 import Doodle from '../doodle'
+import HeightLightCode from './custom/hight-light-code'
+import { ReactElement } from 'react'
 
 // 添加自定义的玩意
 const customizeTags = {
   escape: EscapeTag,
   codeeditor: CodeEditor,
   codepen: CodePen,
-  cssdoodle: Doodle
+  cssdoodle: Doodle,
 }
 
 export default function PostRender({
@@ -50,7 +52,7 @@ export default function PostRender({
     .use(escapeRemarkPlugin)
     .use(remarkGfm)
     .use(remarkRehype, { allowDangerousHtml: true })
-    .use(rehypeHighlight)
+    // .use(rehypeHighlight)
     .use(rehypeRaw) // 处理md mixin html，尤其script
     .use(rehypeStringify, { allowDangerousHtml: true })
     .use(headerLinkExtension)
@@ -81,6 +83,7 @@ export default function PostRender({
             slug={slug}
           />
         ),
+        pre: (props) => (<HeightLightCode>{props.children as ReactElement<HTMLElement>}</HeightLightCode>),
         ...customizeTags
       },
       passKeys: true,

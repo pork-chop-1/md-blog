@@ -17,8 +17,7 @@ export async function GET(request: Request, { params }: GetParams) {
 
 type PatchParams = {
   params: {
-    slug: string[],
-    inc: number
+    slug: string[]
   }
 }
 
@@ -29,8 +28,12 @@ export async function PATCH(request: NextRequest, { params }: PatchParams) {
   if(Number.isNaN(inc)) {
     throw 'inc not valid'
   }
+  if(inc > 50) {
+    throw 'oops!!!'
+  }
   
-  Likes.updateOne({slug}, {$inc: {count: inc}}, {upsert: true})
+  const res = await Likes.updateOne({slug}, {$inc: {count: inc}}, {upsert: true})
+  console.log(res)
 
   return Response.json({})
 }
