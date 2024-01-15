@@ -1,11 +1,13 @@
+import SearchInput from '@/components/search-input'
 import styles from './index.module.scss'
 import Link from 'next/link'
 
 export default function Header() {
   return (
     <header className={styles.gradient} id="header">
-      <nav className="w-full h-16 flex justify-between items-center px-8">
-        <h1 className="text-2xl">Tom's Blog</h1>
+      <nav className="w-full h-16 flex items-center px-8">
+        <h1 className="text-2xl mr-auto">Title</h1>
+        <SearchInput />
         <ul className="flex [&>li]:mx-6 [&>li>a]:flex">
           <li>
             <Link href={'/'}>

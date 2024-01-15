@@ -57,7 +57,7 @@ css doodle start
 css doodle end
 
 <cssdoodle click-to-update rule="
-    @grid: 18 / 100vmax / #0a0c27;
+    @grid: 18 / 80vmax / #0a0c27;
     --hue: calc(180 + 1.5 * @x * @y);
     background: hsl(var(--hue), 50%, 70%);
     margin: -.5px;
@@ -71,7 +71,7 @@ css doodle end
 </cssdoodle>
 
 <cssdoodle click-to-update rule="
-    @grid: 18 / 100vmax / #0a0c27;
+    @grid: 18 / 80vmax / #0a0c27;
     background: rgba(96, 86, 158, @rand(.9));
 transition: .2s ease @rand(200ms);
 transform: rotate(@rand(360deg));

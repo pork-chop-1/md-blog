@@ -4,15 +4,11 @@ import dbConnect from '@/lib/mongodb'
 import fs from 'fs'
 import { join } from 'path'
 export async function register() {
-  // dosome
-  // console.log('init')
-  // const paths = fs.readdirSync('./_posts')
-  // console.log(paths)
-  // paths?.forEach(path => {
-  //   fs.stat(join('./_posts', path), (err, data) => {
-  //     console.log(data)
-  //   })
-  // })
-  await dbConnect()
-  console.log('mongodb connected!')
+  dbConnect().then(() => {
+    console.log('mongodb connected!')
+  })
+  if (process.env.NEXT_RUNTIME === 'nodejs') {
+    const { initPostData } = await import('./lib/api')
+    initPostData()
+  }
 }

@@ -88,12 +88,16 @@ export default function DocumentToc({ content }: { content: string }) {
       }
       const list = headers.current
       // const headers = document.querySelectorAll('#article-rendered .header-creator')
-      let activeId = null
-      for (let i = 0; i < list.length; i++) {
-        if (list[i].getBoundingClientRect().top >= 0) {
-          activeId = list[i].getAttribute('id')
+      let activeId = null, i = 0
+      for (; i < list.length; i++) {
+        if (list[i].getBoundingClientRect().top >= 20) {
+          activeId = list[i - 1] ? list[i - 1].getAttribute('id') : null
           break
         }
+      }
+      // 确认滚到最后一个
+      if(!activeId && list[list.length - 1].getBoundingClientRect().top < 20) {
+        activeId = list[list.length - 1].getAttribute('id')
       }
       setActive(activeId)
     }, 200),

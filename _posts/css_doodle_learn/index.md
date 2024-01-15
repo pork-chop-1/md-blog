@@ -5,9 +5,11 @@ tags: css-doodle
 ---
 
 # `<css-doodle />`
+
 一个用CSS绘制图案的web组件
 
 ## 介绍
+
 `<css-doodle />`是基于 [Shadow DOM v1](https://developers.google.com/web/fundamentals/web-components/shadowdom)和[Custom Elements v1](https://html.spec.whatwg.org/multipage/scripting.html#custom-elements)。你现在可以在所有主流浏览器上使用它而不需要其他依赖。
 
 这个组件将根据其内部的规则(普通CSS)生成一个div网格。您可以使用CSS轻松地操作这些单元格，以生成图形模式或动画图形。
@@ -25,7 +27,7 @@ tags: css-doodle
 - 只有当网格是一维的时候，行或列被限制为1024
 - n x m遵循(col, row)或(x, y)的顺序。以下格式的网格值都是可识别的:
 
-```
+```text
 grid = "0"
 grid = "5"
 grid = "20"
@@ -35,7 +37,6 @@ grid = "5,7"
 ```
 
 吐槽1: 和grid有关的非常有趣的一个东西，而且很方便的可以做出很多不同的复杂图案。
-
 
 2. Use
 
@@ -59,7 +60,7 @@ grid = "5,7"
 2. `:container`
 
   >`:container`是容器元素，包含所有使用`Grid Layout`的单元格。你可能想在里面设置`grid-gap`。
-  它继承了:doodle的所有网格属性，这就是为什么它也能工作:
+  它继承了`:doodle`的所有网格属性，这就是为什么它也能工作:
 
   ```css
   :doodle {
@@ -96,7 +97,6 @@ grid = "5,7"
   
   可以使用x(横坐标),y(纵坐标),i(count),X(横向总个数),Y(纵向总个数),I(总个数)
 
-
 ## Properties
 
 1. `@grid`: `@grid: 8x7 / 200px 100px`
@@ -130,3 +130,6 @@ grid = "5,7"
 
 15. `@doodle(code)`
 使用一个独立的doodle代码来生成base64图片，代替image
+
+
+:fortest eheoihoqeihw

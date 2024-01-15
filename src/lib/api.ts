@@ -6,11 +6,19 @@ const POST_ROOT = '_posts'
 
 type dataType = { [key: string]: any }
 type postDataType = { data: dataType, content: string }
-type postType = { [key: string]: postDataType }
+type postType = { [slug: string]: postDataType }
 
-const UPDATE_GAP = 5
 let allPosts: postType
-let prevTime = 0
+
+export function initPostData() {
+  allPosts = getPostSlugs().reduce((postMap, path) => {
+    const postData = _getPostBySlug(path)
+    postData && (postMap[path] = postData)
+    return postMap
+  }, {} as postType)
+
+
+}
 
 // 获取post下所有文件名称
 export function getPostSlugs() {
@@ -148,16 +156,6 @@ export function getAllPosts<T extends string>({
     _compare = (l: any, r: any) => -compareFn(l, r)
   }
 
-  if (Date.now() - prevTime > UPDATE_GAP * 1000) {
-    prevTime = Date.now()
-    
-    allPosts = getPostSlugs().reduce((postMap, path) => {
-      const postData = _getPostBySlug(path)
-      postData && (postMap[path] = postData)
-      return postMap
-    }, {} as postType)
-  }
-
   return Object.keys(allPosts)
     .map(path => {
       // let [_, lastPath] = _matchLastPath(path)
@@ -174,10 +172,12 @@ export function getTagMap() {
       prev[v] = (prev[v] || 0) + 1
     })
     return prev
-  }, {} as { [key: string]: any })
+  }, {} as { [key: string]: number })
   return tagMap
 }
 
+
+// todo move-----------------------
 export function dealImagePath(image: string, slug: string): [path: string, isRelative: boolean] {
   let isRelative = false
   if (/^\.\//.test(image)) {

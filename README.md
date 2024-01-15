@@ -46,3 +46,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 7. search page add
 
  ---extension--- comment system
+npm config set proxy http://localhost:7890

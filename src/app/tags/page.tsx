@@ -6,6 +6,7 @@ export default function TagsPage() {
   const tagMap = getTagMap()
   return <>
     <Header></Header>
+    
     <div>{JSON.stringify(tagMap)}</div>
     <Footer />
   </>

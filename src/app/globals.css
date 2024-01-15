@@ -107,3 +107,9 @@ code.hljs {
   display: inline-block;
   width: 100%
 }
+
+
+/* code mirror focus dash outline */
+.cm-focused {
+  outline: none !important;
+}
