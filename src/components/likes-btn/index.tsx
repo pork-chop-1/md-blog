@@ -1,12 +1,15 @@
 'use client'
 
-import { memo, useEffect, useMemo, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import _ from 'lodash-es'
 
 function LikesBtn({ slug }: { slug: string }) {
   const [count, setCount] = useState(0)
   const inc = useRef(0)
-  const patchLikes = useRef<_.DebouncedFunc<() => void> | null>(null)
+  const patchLikes = useCallback(_.debounce(() => {
+    fetch(`/api/likes/${slug}?inc=${inc.current}`, { method: 'PATCH' })
+    inc.current = 0
+  }, 500), [slug])
 
   useEffect(() => {
     fetch('/api/likes/' + slug, {
@@ -15,17 +18,13 @@ function LikesBtn({ slug }: { slug: string }) {
       .then((res) => res.json())
       .then((res) => setCount(res))
 
-    patchLikes.current = _.debounce(() => {
-      fetch(`/api/likes/${slug}?inc=${inc.current}`, { method: 'PATCH' })
-      inc.current = 0
-    }, 500)
   }, [slug])
 
   const clickHandler = () => {
     setCount(count + 1)
     inc.current += 1
 
-    patchLikes.current && patchLikes.current()
+    patchLikes()
   }
 
   return (

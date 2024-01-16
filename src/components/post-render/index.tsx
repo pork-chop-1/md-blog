@@ -69,7 +69,7 @@ export default function PostRender({
           </ScriptTag>
         ),
         style: (props) => <StyleTag>{props.children as string}</StyleTag>,
-        a: (props) => <Link href={props.href || ''}>{props.children}</Link>,
+        a: (props) => <Link href={props.href || ''}>{props.children || props.href}</Link>,
         img: (props) => (
           <ImageTag
             {...props}

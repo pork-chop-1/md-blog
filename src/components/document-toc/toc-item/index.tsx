@@ -20,7 +20,7 @@ export default function TocItem({
   active: string | null
   subList: headingType[]
 }) {
-  const idWithPrefix = `${process.env.NEXT_PUBLIC_ID_PREFIX}-${id}`
+  const idWithPrefix = `${process.env.NEXT_PUBLIC_ID_PREFIX}${id}`
   const href = `#${idWithPrefix}`
 
   function anchorTitle(e: React.MouseEvent<HTMLAnchorElement>) {

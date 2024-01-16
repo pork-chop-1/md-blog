@@ -33,7 +33,6 @@ export async function PATCH(request: NextRequest, { params }: PatchParams) {
   }
   
   const res = await Likes.updateOne({slug}, {$inc: {count: inc}}, {upsert: true})
-  console.log(res)
 
   return Response.json({})
 }

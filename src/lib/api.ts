@@ -1,14 +1,24 @@
 import matter from 'gray-matter'
 import fs from 'fs'
 import { join } from 'path'
+import remarkParse from 'remark-parse'
+import { unified } from 'unified'
+import GithubSlugger from 'github-slugger'
+import { toString } from 'hast-util-to-string'
 
+const slugs = new GithubSlugger()
 const POST_ROOT = '_posts'
 
 type dataType = { [key: string]: any }
 type postDataType = { data: dataType, content: string }
 type postType = { [slug: string]: postDataType }
 
-let allPosts: postType
+export let allPosts: postType
+export let allSearchData: {
+  title: string,
+  slug: string,
+  titleList: { title: string, level: number, slug: string }[]
+}[]
 
 export function initPostData() {
   allPosts = getPostSlugs().reduce((postMap, path) => {
@@ -17,7 +27,30 @@ export function initPostData() {
     return postMap
   }, {} as postType)
 
+  // search data
+  allSearchData = []
+  Object.keys(allPosts).map(slug => {
+    slugs.reset()
+    const post = allPosts[slug]
+    const title = post.data.title as string
+    const content = post.content
+    const res = unified().use(remarkParse).parse(content)
+    const titleList = res.children
+      .filter((v) => v.type === 'heading')
+      .map((v) => {
+        // @ts-expect-error type not match
+        const title = toString(v)
+        // @ts-expect-error heading ast node contains depth
+        return { title: title, level: v.depth, slug: `${process.env.NEXT_PUBLIC_ID_PREFIX}${slugs.slug(title)}` }
+      })
+      .filter((v) => [2, 3, 4].indexOf(v.level) !== -1)
 
+    allSearchData.push({
+      title,
+      slug,
+      titleList
+    })
+  })
 }
 
 // 获取post下所有文件名称
@@ -26,7 +59,7 @@ export function getPostSlugs() {
   function checkRevision(path: string) {
     const pathJoined = join(process.cwd(), POST_ROOT, path)
     const folderPath = _getMdFileFolder(path)?.folderPath
-    
+
     if (!folderPath) {
       const folders = fs.readdirSync(pathJoined)
       folders.forEach(v => checkRevision(join(path, v)))
@@ -40,7 +73,7 @@ export function getPostSlugs() {
 
 function _matchLastPath(path: string) {
   const match = [...path.matchAll(/^(.+)[\\\/](.+)$/g)]
-  if(match.length === 0) {
+  if (match.length === 0) {
     return ['', path]
   }
   return [match[0][1], match[0][2]]
@@ -52,7 +85,7 @@ function _matchLastPath(path: string) {
 function _getMdFileFolder(path: string) {
   let filePath
   let folderPath
-  
+
   let [parentFolder, folderName] = _matchLastPath(path)
 
   if (
@@ -140,6 +173,10 @@ export function getAllPosts<T extends string>({
   offset?: number,
   orderBy?: 'asc' | 'desc'
 }) {
+  if (!allPosts) {
+    initPostData()
+  }
+
   // https://www.typescriptlang.org/docs/handbook/2/narrowing.html#using-type-predicates
   // https://stackoverflow.com/questions/43118692/typescript-filter-out-nulls-from-an-array
   let compareFn = (l: any, r: any) => {

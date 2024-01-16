@@ -13,6 +13,9 @@ export default function SearchInput() {
         e.preventDefault()
         showModal()
       }
+      if(e.key === 'Escape') {
+        setIsShowing(false)
+      }
     }
     document.addEventListener('keydown', keyBindHandler)
 
