@@ -4,29 +4,19 @@ import { queryResType } from '@/app/api/query/route'
 import Link from 'next/link'
 import { forwardRef, useImperativeHandle, useRef } from 'react'
 
-export default forwardRef(function ListItem(
+export default function ListItem(
   {
     slug,
     title,
     innerTitle,
     innerSlug,
   }: queryResType[number],
-  ref,
 ) {
-  const link = useRef<HTMLAnchorElement>(null)
-
-  useImperativeHandle(ref, () => {
-    return {
-      click: () => link.current?.click(),
-    }
-  })
-
   if (innerTitle) {
     return (
       <Link
-        href={`${slug}#$${innerSlug}`}
+        href={`/posts/${slug}#${innerSlug}`}
         className="flex pl-8 p-2 items-center"
-        ref={link}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -69,4 +59,4 @@ export default forwardRef(function ListItem(
       </Link>
     )
   }
-})
+}

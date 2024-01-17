@@ -6,6 +6,10 @@ import { unified } from 'unified'
 import GithubSlugger from 'github-slugger'
 import { toString } from 'hast-util-to-string'
 
+const _slashJoin = (...path: string[]) => {
+  return join(...path).replaceAll('\\', '\/')
+}
+
 const slugs = new GithubSlugger()
 const POST_ROOT = '_posts'
 
@@ -57,12 +61,12 @@ export function initPostData() {
 export function getPostSlugs() {
   const pathList: string[] = []
   function checkRevision(path: string) {
-    const pathJoined = join(process.cwd(), POST_ROOT, path)
+    const pathJoined = _slashJoin(process.cwd(), POST_ROOT, path)
     const folderPath = _getMdFileFolder(path)?.folderPath
 
     if (!folderPath) {
       const folders = fs.readdirSync(pathJoined)
-      folders.forEach(v => checkRevision(join(path, v)))
+      folders.forEach(v => checkRevision(_slashJoin(path, v)))
     } else {
       pathList.push(path)
     }
@@ -89,17 +93,17 @@ function _getMdFileFolder(path: string) {
   let [parentFolder, folderName] = _matchLastPath(path)
 
   if (
-    fs.existsSync(join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`))
+    fs.existsSync(_slashJoin(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`))
   ) {
-    filePath = join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`)
-    folderPath = join(process.cwd(), POST_ROOT, parentFolder, folderName)
+    filePath = _slashJoin(process.cwd(), POST_ROOT, parentFolder, `${folderName}/${folderName}.md`)
+    folderPath = _slashJoin(process.cwd(), POST_ROOT, parentFolder, folderName)
   } else if (
     fs.existsSync(
-      join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`),
+      _slashJoin(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`),
     )
   ) {
-    filePath = join(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`)
-    folderPath = join(process.cwd(), POST_ROOT, parentFolder, folderName)
+    filePath = _slashJoin(process.cwd(), POST_ROOT, parentFolder, `${folderName}/index.md`)
+    folderPath = _slashJoin(process.cwd(), POST_ROOT, parentFolder, folderName)
   }
   return { filePath, folderPath }
 }
@@ -213,6 +217,13 @@ export function getTagMap() {
   return tagMap
 }
 
+export function getPostsByTag(tag: string) {
+  return getAllPosts({
+    fields: ['tags', 'title', 'slug', 'date']
+  }).filter(v =>
+    (v.tags as string[]).find(_tag => tag === _tag) != null
+  )
+}
 
 // todo move-----------------------
 export function dealImagePath(image: string, slug: string): [path: string, isRelative: boolean] {

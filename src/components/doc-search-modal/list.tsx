@@ -3,6 +3,7 @@
 import { queryResType } from '@/app/api/query/route'
 import ListItem from './list-item'
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function List({ list }: { list: queryResType }) {
   const listWithId = list.map((v) => ({
@@ -13,6 +14,7 @@ export default function List({ list }: { list: queryResType }) {
     listWithId.length > 0 ? listWithId[0].id : null,
   )
 
+  const router = useRouter()
   
   useEffect(() => {
     const controlHandler = (e: KeyboardEvent) => {
@@ -31,7 +33,8 @@ export default function List({ list }: { list: queryResType }) {
         }
       } else if(e.key === 'Enter') {
         e.preventDefault()
-        activeId && linksRef.current[activeId].click()
+        const item = listWithId.find(v => v.id === activeId)
+        item && router.push(`/posts/${item.id}`)
       }
     }
     document.addEventListener('keydown', controlHandler)
@@ -39,17 +42,15 @@ export default function List({ list }: { list: queryResType }) {
     return () => document.removeEventListener('keydown', controlHandler)
   }, [activeId])
 
-  const linksRef = useRef<{[key: string]: any}>({})
-
   return (
-    <ul className="px-2">
+    <ul className="px-2 max-h-[320px] overflow-auto">
       {listWithId.map((v) => (
         <li
           key={v.id}
           className={`rounded-lg ${v.id === activeId ? 'bg-gray-200' : ''}`}
           onMouseEnter={() => setActiveId(v.id)}
         >
-          <ListItem {...v} ref={item => linksRef.current[v.id] = item}/>
+          <ListItem {...v}/>
         </li>
       ))}
     </ul>
