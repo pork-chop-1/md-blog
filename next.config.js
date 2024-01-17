@@ -10,9 +10,9 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    instrumentationHook: true
-  }
+  // experimental: {
+  //   instrumentationHook: true
+  // }
 }
 
 module.exports = nextConfig

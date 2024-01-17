@@ -1,3 +1,5 @@
+'use client'
+
 import { queryResType } from '@/app/api/query/route'
 import Link from 'next/link'
 import { forwardRef, useImperativeHandle, useRef } from 'react'

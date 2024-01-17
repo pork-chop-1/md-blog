@@ -1,17 +1,10 @@
 'use client'
 
 import { queryResType } from '@/app/api/query/route'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import _ from 'lodash-es'
 import List from './list'
-
-let initList: queryResType = []
-fetch('/api/query', { method: 'GET' })
-  .then((res) => res.json())
-  .then((res) => {
-    initList = res
-  })
 
 export default function DocSearchModal({
   setShowing,
@@ -29,6 +22,7 @@ export default function DocSearchModal({
   // https://stackoverflow.com/questions/76268977/how-to-create-a-portal-modal-in-next-13-4
   const [mounted, setMounted] = useState(false)
   const [list, setList] = useState<queryResType>([])
+  const initList = useRef<queryResType>([])
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -46,7 +40,7 @@ export default function DocSearchModal({
   const searchHandler = useCallback(
     _.throttle((value: string) => {
       if (value === '') {
-        setList(initList)
+        setList(initList.current)
       } else {
         fetchQuery(value)
       }
@@ -57,6 +51,16 @@ export default function DocSearchModal({
     setSearch(e.target.value)
     searchHandler(e.target.value)
   }
+
+  useEffect(() => {
+    fetch('/api/query', { method: 'GET' })
+      .then((res) => res.json())
+      .then((res) => {
+        initList.current = res
+        setList(initList.current)
+        console.log(res, initList.current)
+      })
+  }, [])
 
   return showing && mounted ? (
     <>

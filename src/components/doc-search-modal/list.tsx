@@ -1,3 +1,5 @@
+'use client'
+
 import { queryResType } from '@/app/api/query/route'
 import ListItem from './list-item'
 import { useEffect, useRef, useState } from 'react'

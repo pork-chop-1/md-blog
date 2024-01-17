@@ -9,6 +9,7 @@ type GetParams = {
 }
 
 export async function GET(request: Request, { params }: GetParams) {
+  await dbConnect()
   let slug = params.slug.join('\/')
   const res = await Likes.find().where('slug').equals(slug)
 
@@ -22,17 +23,17 @@ type PatchParams = {
 }
 
 export async function PATCH(request: NextRequest, { params }: PatchParams) {
-
+  await dbConnect()
   const inc = Number(request.nextUrl.searchParams.get('inc'))
   let slug = params.slug.join('\/')
-  if(Number.isNaN(inc)) {
+  if (Number.isNaN(inc)) {
     throw 'inc not valid'
   }
-  if(inc > 50) {
+  if (inc > 50) {
     throw 'oops!!!'
   }
-  
-  const res = await Likes.updateOne({slug}, {$inc: {count: inc}}, {upsert: true})
+
+  const res = await Likes.updateOne({ slug }, { $inc: { count: inc } }, { upsert: true })
 
   return Response.json({})
 }
