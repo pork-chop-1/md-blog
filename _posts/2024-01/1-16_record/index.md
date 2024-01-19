@@ -34,8 +34,10 @@ img: /default-bg.webp
 
 [](https://stackoverflow.com/questions/41253310/typescript-retrieve-element-type-information-from-array-type)
 
-```ts
+```typescript
  type itemType = ArrayType[number]
 ```
 
-## [ECMAScript 6 arrow function that returns an object](https://stackoverflow.com/questions/28770415/ecmascript-6-arrow-function-that-returns-an-object)
+## ECMAScript 6 arrow function that returns an object
+
+[](https://stackoverflow.com/questions/28770415/ecmascript-6-arrow-function-that-returns-an-object)

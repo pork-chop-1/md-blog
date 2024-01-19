@@ -11,6 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import { useGSAP } from '@gsap/react'
 
 export type headingType = {
   title: string,
@@ -104,16 +105,14 @@ export default function DocumentToc({ content }: { content: string }) {
   )
 
   const wrapper = useRef(null)
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollToPlugin)
-    }, wrapper)
-  }, [])
+  const {contextSafe} = useGSAP(() => {
+    gsap.registerPlugin(ScrollToPlugin)
+  }, {scope: wrapper})
 
-  function ItemClickHandler(e: React.MouseEvent<HTMLAnchorElement>) {
+  const ItemClickHandler = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href') || ''
     gsap.to(window, {duration: 0.5, scrollTo:{y:href, offsetY:0}});
-  }
+  }) as (e: React.MouseEvent<HTMLAnchorElement>) => void
 
   return (
     <div className="document-toc-container flex flex-col" ref={wrapper}>

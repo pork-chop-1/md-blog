@@ -58,7 +58,6 @@ export default function DocSearchModal({
       .then((res) => {
         initList.current = res
         setList(initList.current)
-        console.log(res, initList.current)
       })
   }, [])
 

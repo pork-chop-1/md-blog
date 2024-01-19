@@ -33,7 +33,6 @@ export function headerLinkExtension() {
         }]
       }
     })
-    // console.log(tree, file)
   }
 }
 
