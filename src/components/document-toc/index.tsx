@@ -79,12 +79,12 @@ export default function DocumentToc({ content }: { content: string }) {
   typeof window !== "undefined" && window.addEventListener(
     'scroll',
     _.throttle((e) => {
-      if (headers.current == null || headers.current.length === 0) {
+      if (headers.current == null) {
         headers.current = document.querySelectorAll(
           '#article-rendered .header-creator',
         )
       }
-      if (!headers.current || headers.current.length === 0) {
+      if (!headers.current) {
         return
       }
       const list = headers.current
@@ -112,7 +112,7 @@ export default function DocumentToc({ content }: { content: string }) {
   const ItemClickHandler = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href') || ''
     gsap.to(window, {duration: 0.5, scrollTo:{y:href, offsetY:0}});
-  })
+  }) as (e: React.MouseEvent<HTMLAnchorElement>) => void
 
   return (
     <div className="document-toc-container flex flex-col" ref={wrapper}>

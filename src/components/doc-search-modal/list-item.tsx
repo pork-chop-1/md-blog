@@ -38,7 +38,7 @@ export default function ListItem(
   } else {
     return (
       <Link
-        href={`/posts/${slug}`}
+        href={slug}
         className="flex pl-4 p-2 items-center"
       >
         <svg

@@ -27,7 +27,7 @@ export default function ButtonsSide() {
 
   const goTop = contextSafe(() => {
     gsap.to(window, { duration: 0.5, scrollTo: 0 })
-  })
+  }) as () => void
 
   return (
     <div
