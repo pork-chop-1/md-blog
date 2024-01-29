@@ -15,7 +15,7 @@ export default function ListItem(
   if (innerTitle) {
     return (
       <Link
-        href={``}
+        href={`/posts/${slug}#${innerSlug}`}
         className="flex pl-8 p-2 items-center"
       >
         <svg
@@ -38,7 +38,7 @@ export default function ListItem(
   } else {
     return (
       <Link
-        href={``}
+        href={`/posts/${slug}`}
         className="flex pl-4 p-2 items-center"
       >
         <svg
