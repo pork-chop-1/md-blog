@@ -29,13 +29,14 @@ import CodePen from './custom/CodePen'
 import Doodle from '../doodle'
 import HeightLightCode from './custom/hight-light-code'
 import { ReactElement } from 'react'
+import dynamic from 'next/dynamic'
 
 // 添加自定义的玩意
 const customizeTags = {
-  escape: EscapeTag,
-  codeeditor: CodeEditor,
-  codepen: CodePen,
-  cssdoodle: Doodle,
+  escape: dynamic(() => import('./replace/escape-tag'), {ssr: false}),
+  codeeditor: dynamic(() => import('@/components/code-editor'), {ssr: false}),
+  codepen: dynamic(() => import('./custom/CodePen'), {ssr: false}),
+  cssdoodle: dynamic(() => import('../doodle'), {ssr: false}),
 }
 
 export default function PostRender({
