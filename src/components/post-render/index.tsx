@@ -29,10 +29,10 @@ import dynamic from 'next/dynamic'
 
 // 添加自定义的玩意
 const customizeTags = {
-  escape: dynamic(() => import('./replace/escape-tag'), {ssr: false}),
-  codeeditor: dynamic(() => import('@/components/code-editor'), {ssr: false}),
-  codepen: dynamic(() => import('./custom/CodePen'), {ssr: false}),
-  cssdoodle: dynamic(() => import('../doodle'), {ssr: false}),
+  // escape: dynamic(() => import('./replace/escape-tag'), {ssr: false}),
+  // codeeditor: dynamic(() => import('@/components/code-editor'), {ssr: false}),
+  // codepen: dynamic(() => import('./custom/CodePen'), {ssr: false}),
+  // cssdoodle: dynamic(() => import('../doodle'), {ssr: false}),
 }
 
 export default function PostRender({
