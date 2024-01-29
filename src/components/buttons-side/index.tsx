@@ -4,28 +4,28 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useEffect, useRef, useState } from 'react'
 import styles from './index.module.scss'
-import { useGSAP } from '@gsap/react'
+// import { useGSAP } from '@gsap/react'
 
 export default function ButtonsSide() {
   const [percentage, setPercentage] = useState<string | number>('· · ·')
   const component = useRef(null)
   const [circleDash, setCircleDash] = useState('0 151')
 
-  const { contextSafe } = useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger)
-    ScrollTrigger.create({
-      trigger: document.body,
-      start: 'top top',
-      end: 'bottom bottom',
-      onUpdate: (self) => {
-        const percent = Math.round(self.progress * 100)
-        setPercentage(percent === 0 ? '· · ·' : percent)
-        setCircleDash(Math.round(self.progress * 151) + 'px 151px')
-      },
-    })
-  }, {})
+  // const { contextSafe } = useGSAP(() => {
+  //   gsap.registerPlugin(ScrollTrigger)
+  //   ScrollTrigger.create({
+  //     trigger: document.body,
+  //     start: 'top top',
+  //     end: 'bottom bottom',
+  //     onUpdate: (self) => {
+  //       const percent = Math.round(self.progress * 100)
+  //       setPercentage(percent === 0 ? '· · ·' : percent)
+  //       setCircleDash(Math.round(self.progress * 151) + 'px 151px')
+  //     },
+  //   })
+  // }, {}) contextSafe
 
-  const goTop = contextSafe(() => {
+  const goTop = (() => {
     gsap.to(window, { duration: 0.5, scrollTo: 0 })
   })
 

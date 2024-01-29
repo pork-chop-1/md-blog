@@ -11,7 +11,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import gsap from 'gsap'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
-import { useGSAP } from '@gsap/react'
+// import { useGSAP } from '@gsap/react'
 
 export type headingType = {
   title: string,
@@ -105,11 +105,11 @@ export default function DocumentToc({ content }: { content: string }) {
   )
 
   const wrapper = useRef(null)
-  const {contextSafe} = useGSAP(() => {
-    gsap.registerPlugin(ScrollToPlugin)
-  }, {scope: wrapper})
+  // const {contextSafe} = useGSAP(() => {
+  //   gsap.registerPlugin(ScrollToPlugin)
+  // }, {scope: wrapper}) contextSafe
 
-  const ItemClickHandler = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
+  const ItemClickHandler = ((e: React.MouseEvent<HTMLAnchorElement>) => {
     const href = e.currentTarget.getAttribute('href') || ''
     gsap.to(window, {duration: 0.5, scrollTo:{y:href, offsetY:0}});
   })
