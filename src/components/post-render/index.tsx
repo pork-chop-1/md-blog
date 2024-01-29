@@ -23,9 +23,6 @@ import './index.scss'
 import { headerLinkExtension } from '@/lib/unified/header'
 import { escapeRemarkPlugin } from '@/lib/unified/escape'
 
-import CodeEditor from '@/components/code-editor';
-import CodePen from './custom/CodePen'
-import Doodle from '../doodle'
 import HeightLightCode from './custom/hight-light-code'
 import { ReactElement } from 'react'
 import dynamic from 'next/dynamic'

@@ -1,3 +1,5 @@
+'use client'
+
 import ViewportLoad from '@/components/viewport-load'
 
 export default function CodePen({
