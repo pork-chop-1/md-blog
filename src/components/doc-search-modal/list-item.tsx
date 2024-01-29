@@ -14,6 +14,7 @@ export default function ListItem(
 ) {
   if (innerTitle) {
     return (
+      // /posts/${slug}#${innerSlug}
       <Link
         href={``}
         className="flex pl-8 p-2 items-center"
@@ -37,6 +38,7 @@ export default function ListItem(
     )
   } else {
     return (
+      // /posts/${slug}
       <Link
         href={``}
         className="flex pl-4 p-2 items-center"

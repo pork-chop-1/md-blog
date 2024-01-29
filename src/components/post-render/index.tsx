@@ -25,7 +25,7 @@ import { escapeRemarkPlugin } from '@/lib/unified/escape'
 
 import HeightLightCode from './custom/hight-light-code'
 import { ReactElement } from 'react'
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 
 // 添加自定义的玩意
 const customizeTags = {
