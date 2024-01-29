@@ -76,33 +76,33 @@ export default function DocumentToc({ content }: { content: string }) {
   const [active, setActive] = useState<string | null>(null)
   const headers = useRef<NodeListOf<HTMLElement> | null>(null)
   // 获取滚动到的标题位置
-  // typeof window !== "undefined" && window.addEventListener(
-  //   'scroll',
-  //   _.throttle((e) => {
-  //     if (headers.current == null || headers.current.length === 0) {
-  //       headers.current = document.querySelectorAll(
-  //         '#article-rendered .header-creator',
-  //       )
-  //     }
-  //     if (!headers.current || headers.current.length === 0) {
-  //       return
-  //     }
-  //     const list = headers.current
-  //     // const headers = document.querySelectorAll('#article-rendered .header-creator')
-  //     let activeId = null, i = 0
-  //     for (; i < list.length; i++) {
-  //       if (list[i].getBoundingClientRect().top >= 20) {
-  //         activeId = list[i - 1] ? list[i - 1].getAttribute('id') : null
-  //         break
-  //       }
-  //     }
-  //     // 确认滚到最后一个
-  //     if(!activeId && list[list.length - 1].getBoundingClientRect().top < 20) {
-  //       activeId = list[list.length - 1].getAttribute('id')
-  //     }
-  //     setActive(activeId)
-  //   }, 200),
-  // )
+  typeof window !== "undefined" && window.addEventListener(
+    'scroll',
+    _.throttle((e) => {
+      if (headers.current == null || headers.current.length === 0) {
+        headers.current = document.querySelectorAll(
+          '#article-rendered .header-creator',
+        )
+      }
+      if (!headers.current || headers.current.length === 0) {
+        return
+      }
+      const list = headers.current
+      // const headers = document.querySelectorAll('#article-rendered .header-creator')
+      let activeId = null, i = 0
+      for (; i < list.length; i++) {
+        if (list[i].getBoundingClientRect().top >= 20) {
+          activeId = list[i - 1] ? list[i - 1].getAttribute('id') : null
+          break
+        }
+      }
+      // 确认滚到最后一个
+      if(!activeId && list[list.length - 1].getBoundingClientRect().top < 20) {
+        activeId = list[list.length - 1].getAttribute('id')
+      }
+      setActive(activeId)
+    }, 200),
+  )
 
   const wrapper = useRef(null)
   // const {contextSafe} = useGSAP(() => {
