@@ -1,4 +1,12 @@
 {
+  "ts-node": {
+    // https://stackoverflow.com/questions/63870080/ts-node-syntaxerror-cannot-use-import-statement-outside-a-module
+    // these options are overrides used only by ts-node
+    // same as our --compilerOptions flag and our TS_NODE_COMPILER_OPTIONS environment variable
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "target": "es2015",
     "lib": ["dom", "dom.iterable", "esnext"],

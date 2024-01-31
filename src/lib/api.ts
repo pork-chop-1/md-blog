@@ -141,7 +141,7 @@ function _filterPostByFields<T extends string>(postData: postDataType, slug: str
     } else if (field === 'date') {
       res[field] = new Date(data[field])
     } else if (field === 'tags') {
-      res[field] = (data[field] as string).split(' ').filter(v => v !== '')
+      res[field] = ((data[field] as string) || '').split(' ').filter(v => v !== '')
     } else if (data[field] != null) {
       res[field] = data[field]
     }

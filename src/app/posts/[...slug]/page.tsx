@@ -62,7 +62,7 @@ export default async function PostDetailPage({
         >
           <article className="w-full py-8 px-4">
             {imageBlock}
-            <h1 className="my-4 text-3xl font-bold">{params.slug}</h1>
+            <h1 className="my-4 text-3xl font-bold">{title}</h1>
             {/* todo */}
             <p className="h-16 flex items-center">
               <time>2023年5月23日</time>

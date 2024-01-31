@@ -7,12 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "style-lint": "npx prettier . --check"
+    "style-lint": "npx prettier . --check",
+    "create": "npx ts-node ./bin/newPost.ts"
   },
   "dependencies": {
     "@codemirror/language": "^6.10.0",
-    "@gsap/react": "^2.0.2",
-    "@mui/base": "5.0.0-beta.23",
+    "@gsap/react": "^2.1.0",
     "@uiw/codemirror-extensions-langs": "^4.21.21",
     "@uiw/codemirror-theme-github": "^4.21.21",
     "@uiw/react-codemirror": "^4.21.21",
